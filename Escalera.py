@@ -42,7 +42,7 @@ plt.imsave("imagen_referencia.png", pixels)'''
 # ---------Extraccion de canales y asignacion de alturas----
 
 # Cargo imagen creada
-imagen_original = cv2.imread("COBE_1.png")   # cambiar para las distintas imagenes
+imagen_original = cv2.imread("imagen_referencia.png")   # cambiar para las distintas imagenes
 imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape
@@ -425,9 +425,8 @@ meshp = StructuredGrid(xp, yp, zp)
 meshb = StructuredGrid(xb, yb, zb)
 meshc = StructuredGrid(xc, yc, zc)
 meshg = StructuredGrid(xg, yg, zg)
-#mesht = pv.merge([meshw, meshr, meshbl, meshb, meshy, meshp, meshc, meshg])
+mesht = pv.merge([meshw, meshr, meshbl, meshb, meshy, meshp, meshc, meshg])
 
-mesht = pv.merge([meshp, meshbl])
 p = pv.Plotter()
 p.add_mesh(meshw, color="white")
 p.add_mesh(meshr, color="red")

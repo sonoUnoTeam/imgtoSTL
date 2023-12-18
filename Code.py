@@ -181,7 +181,7 @@ for i in range(h):
                 zp[i, j] = 50
             pp[i, j] = pixel
             # Magenta
-        elif 100 >= pR >= 80 and 15 >= pG >= 0 and 100 >= pB >= 80:
+        elif 100 >= pR >= 80 and 30 >= pG >= 0 and 100 >= pB >= 80:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -192,7 +192,7 @@ for i in range(h):
                 zp[i, j] = 60
             pp[i, j] = pixel
             # Magenta Oscuro
-        elif 100 >= pR >= 30 and 5 >= pG >= 0 and 100 >= pB >= 30:
+        elif 100 >= pR >= 30 and 30 >= pG >= 0 and 100 >= pB >= 30:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -276,6 +276,8 @@ for i in range(h):
             pbl[i, j] = pixel
         else:
             pe[i, j] = pixel
+
+'''
 plt.figure(figsize=(12, 8))
 
 plt.subplot(3, 3, 1)
@@ -307,46 +309,52 @@ plt.subplot(3, 3, 7)
 plt.title('Extra')
 plt.imshow(pe, cmap='gray')
 
-plt.show()
+plt.show()'''
 
 x_base, y_base = np.meshgrid(range(w), range(h))
 z_base = np.zeros_like(x_base)
-xbl = np.stack((x_base, x), axis=0)
-ybl = np.stack((y_base, y), axis=0)
+xi = np.stack((x_base, x), axis=0)
+yi = np.stack((y_base, y), axis=0)
 zbll = np.stack((z_base, zbl), axis=0)
 zrr = np.stack((z_base, zr), axis=0)
 zcc = np.stack((z_base, zc), axis=0)
 zpp = np.stack((z_base, zp), axis=0)
 zbb = np.stack((z_base, zb), axis=0)
 zgb = np.stack((z_base, zg), axis=0)
+zyy = np.stack((z_base, zy), axis=0)
+zww = np.stack((z_base, zw), axis=0)
+meshr = StructuredGrid(xi, yi, zrr)  # mesh red
+meshp = StructuredGrid(xi, yi, zpp)  # mesh magenta
+meshg = StructuredGrid(xi, yi, zgb)  # mesh green
+meshc = StructuredGrid(xi, yi, zcc)  # mesh cyan
+meshb = StructuredGrid(xi, yi, zbb)  # mesh blue
+meshbl = StructuredGrid(xi, yi, zbll)  # mesh black
+meshy = StructuredGrid(xi, yi, zyy)
+meshw = StructuredGrid(xi, yi, zww)
+# mesht = meshr + meshbl + meshc + meshp + meshg + meshb   # Add mesh
+meshrp = meshr.merge(meshp)
+meshcb = meshb.merge(meshc)
+meshi = meshrp.merge(meshcb)
+mesht = meshi.merge(meshbl)
 
-meshr = StructuredGrid(xbl, ybl, zrr)  # mesh red
-meshp = StructuredGrid(xbl, ybl, zpp)  # mesh magenta
-meshg = StructuredGrid(xbl, ybl, zgb)  # mesh green
-meshc = StructuredGrid(xbl, ybl, zcc)  # mesh cyan
-meshb = StructuredGrid(xbl, ybl, zbb)  # mesh blue
-meshbl = StructuredGrid(xbl, ybl, zbll)  # mesh black
-#mesht = meshr + meshbl + meshc + meshp + meshg + meshb   # Add mesh
-
-mesht = pv.merge([meshr, meshp, meshc, meshb, meshbl, meshg])
 # ----------- Visualice the mesh
 p = pv.Plotter()
-# p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
-#             line_width=None, opacity=2.0)
+p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
+            line_width=None, opacity=2.0)
 # p.add_mesh(meshw, color="white")
-p.add_mesh(meshr, color="red")
-p.add_mesh(meshp, color="magenta")
+# p.add_mesh(meshr, color="red")
+# p.add_mesh(meshp, color="magenta")
 # p.add_mesh(meshy, color="yellow")
-p.add_mesh(meshg, color="green")
-p.add_mesh(meshc, color="cyan")
-p.add_mesh(meshb, color="blue")
-p.add_mesh(meshbl, color="black")
-# p.add_mesh(mesht, color='lightblue')
-# p.add_floor()
+# p.add_mesh(meshg, color="green")
+# p.add_mesh(meshc, color="cyan")
+# p.add_mesh(meshb, color="blue")
+# p.add_mesh(meshbl, color="black")
+p.add_mesh(mesht, color='lightblue')
+p.add_floor()
 p.show()
 
 
-# polydata = mesht.extract_geometry()
-# stl_file = 'cobe_2.stl'
-# polydata.save(stl_file)
-# print("se guardo la imagen como: ", stl_file)
+polydata = mesht.extract_geometry()
+stl_file = 'cobe_2.stl'
+polydata.save(stl_file)
+print("se guardo la imagen como: ", stl_file)
