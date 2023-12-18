@@ -59,7 +59,6 @@ for i in range(h):
         pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
         pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
         pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
-        promedio = sum(pixel) / len(pixel)
         # Blanco
         if pR == 100 and pG == 100 and pB == 100:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
@@ -138,7 +137,7 @@ for i in range(h):
                 zg[i, j] = 20
             pg[i, j] = pixel
             # Azul Claro
-        elif 35 >= pR >= 0 and 40 >= pG >= 0 and 100 >= pB >= 80:
+        elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 80:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -160,7 +159,7 @@ for i in range(h):
                 zb[i, j] = 10
             pb[i, j] = pixel
             # Azul Oscuro
-        elif 10 >= pR >= 0 and 10 >= pG >= 0 and 50 >= pB >= 30:
+        elif 30 >= pR >= 0 and 10 >= pG >= 0 and 50 >= pB >= 30:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -182,7 +181,7 @@ for i in range(h):
                 zp[i, j] = 50
             pp[i, j] = pixel
             # Magenta
-        elif 100 >= pR >= 30 and 30 >= pG >= 0 and 100 >= pB >= 30:
+        elif 100 >= pR >= 80 and 15 >= pG >= 0 and 100 >= pB >= 80:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -193,7 +192,7 @@ for i in range(h):
                 zp[i, j] = 60
             pp[i, j] = pixel
             # Magenta Oscuro
-        elif 80 >= pR >= 30 and 30 >= pG >= 0 and 100 >= pB >= 30:
+        elif 100 >= pR >= 30 and 5 >= pG >= 0 and 100 >= pB >= 30:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
