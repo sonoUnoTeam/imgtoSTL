@@ -64,7 +64,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zw[i, j] = 20
+                zw[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -272,7 +272,7 @@ for i in range(h):
         elif pR == 0 and pG == 0 and pB == 0:
             x[i, j] = j
             y[i, j] = i
-            zbl[i, j] = 30
+            zbl[i, j] = 10
             pbl[i, j] = pixel
         else:
             pe[i, j] = pixel
@@ -313,6 +313,8 @@ plt.show()'''
 
 x_base, y_base = np.meshgrid(range(w), range(h))
 z_base = np.zeros_like(x_base)
+xbase2, ybase2 = np.meshgrid(range(w), range(h))
+zbase2 = np.zeros_like(xbase2)
 xi = np.stack((x_base, x), axis=0)
 yi = np.stack((y_base, y), axis=0)
 zbll = np.stack((z_base, zbl), axis=0)
@@ -331,12 +333,13 @@ meshb = StructuredGrid(xi, yi, zbb)  # mesh blue
 meshbl = StructuredGrid(xi, yi, zbll)  # mesh black
 meshy = StructuredGrid(xi, yi, zyy)
 meshw = StructuredGrid(xi, yi, zww)
+base = StructuredGrid(xbase2, ybase2, zbase2)
 # mesht = meshr + meshbl + meshc + meshp + meshg + meshb   # Add mesh
 meshrp = meshr.merge(meshp)
 meshcb = meshb.merge(meshc)
 meshi = meshrp.merge(meshcb)
 mesht = meshi.merge(meshbl)
-
+meshtt = mesht.merge(base)
 # ----------- Visualice the mesh
 p = pv.Plotter()
 p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
@@ -349,12 +352,12 @@ p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
 # p.add_mesh(meshc, color="cyan")
 # p.add_mesh(meshb, color="blue")
 # p.add_mesh(meshbl, color="black")
-p.add_mesh(mesht, color='lightblue')
-p.add_floor()
+p.add_mesh(meshtt, color='lightblue')
+# p.add_floor()
 p.show()
 
 
-polydata = mesht.extract_geometry()
-stl_file = 'cobe_2.stl'
+polydata = meshtt.extract_geometry()
+stl_file = 'cobe_4.stl'
 polydata.save(stl_file)
 print("se guardo la imagen como: ", stl_file)
