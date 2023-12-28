@@ -440,6 +440,6 @@ p.add_mesh(meshbl, color="black")
 p.show()
 
 polydata = mesht.extract_geometry()
-stl_file = 'COBEmagentnegro.stl'
+stl_file = 'escalera.stl'
 polydata.save(stl_file)
 print("guardado")
