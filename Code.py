@@ -12,17 +12,7 @@ imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape
 
-'''
-     R  G  B
-W = [X, X, X] white
-R = [X, 0, 0] Red
-M = [X, 0, X] Red + blue = magenta
-Y = [X, X, 0] Red + green = yellow
-G = [0, X, 0] grenn
-C = [0, X, X] Blue + Green = Cyan
-B = [0, 0, X] Blue
-Bl = [0, 0, 0] Black
-'''
+
 pr = np.zeros((h, w, c), dtype=np.uint8)
 pp = np.zeros((h, w, c), dtype=np.uint8)
 py = np.zeros((h, w, c), dtype=np.uint8)
@@ -64,7 +54,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zw[i, j] = 5
+                zw[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -76,7 +66,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -87,7 +77,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -98,7 +88,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -108,7 +98,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -119,7 +109,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -130,7 +120,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -141,7 +131,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -152,7 +142,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -163,18 +153,18 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 8
+                zb[i, j] = 10
             pb[i, j] = pixel
             # Magenta Claro
         elif 100 >= pR >= 70 and 40 >= pG >= 15 and 100 >= pB >= 70:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -185,7 +175,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -196,7 +186,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -207,7 +197,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -218,7 +208,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -229,7 +219,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -240,7 +230,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -251,7 +241,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -262,7 +252,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbl[i, j] = 5
+                zbl[i, j] = 10
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -313,6 +303,7 @@ plt.show()'''
 
 x_base, y_base = np.meshgrid(range(w), range(h))
 z_base = np.zeros_like(x_base)
+
 xi = np.stack((x_base, x), axis=0)
 yi = np.stack((y_base, y), axis=0)
 zbll = np.stack((z_base, zbl), axis=0)
@@ -323,22 +314,21 @@ zbb = np.stack((z_base, zb), axis=0)
 zgb = np.stack((z_base, zg), axis=0)
 zyy = np.stack((z_base, zy), axis=0)
 zww = np.stack((z_base, zw), axis=0)
-meshr = StructuredGrid(xi, yi, zrr)  # mesh red
-meshp = StructuredGrid(xi, yi, zpp)  # mesh magenta
-meshg = StructuredGrid(xi, yi, zgb)  # mesh green
-meshc = StructuredGrid(xi, yi, zcc)  # mesh cyan
-meshb = StructuredGrid(xi, yi, zbb)  # mesh blue
-meshbl = StructuredGrid(xi, yi, zbll)  # mesh black
-meshy = StructuredGrid(xi, yi, zyy)
-meshw = StructuredGrid(xi, yi, zww)
-base = StructuredGrid(x_base, y_base, zbl)
-mesht = pv.merge([meshw, meshr, meshb, meshy, meshp, meshc, meshg, meshbl])  # Add mesh
-# meshrp = meshr.merge(meshp)
-# meshcb = meshb.merge(meshc)
-# meshi = meshrp.merge(meshcb)
-# mesht = meshi.merge(meshbl)
-meshtt = mesht.merge(base)
-mesh_clean = meshtt.clean()
+meshr = StructuredGrid(-xi, yi, zrr)  # mesh red
+meshp = StructuredGrid(-xi, yi, zpp)  # mesh magenta
+meshg = StructuredGrid(-xi, yi, zgb)  # mesh green
+meshc = StructuredGrid(-xi, yi, zcc)  # mesh cyan
+meshb = StructuredGrid(-xi, yi, zbb)  # mesh blue
+meshbl = StructuredGrid(-xi, yi, zbll)  # mesh black
+meshy = StructuredGrid(-xi, yi, zyy)  # mesh yellow
+meshw = StructuredGrid(-xi, yi, zww) # mesh white
+base = StructuredGrid(-x_base, y_base, zbl)
+base2 = StructuredGrid(-x_base, y_base, z_base)
+mesht = pv.merge([meshw, meshr, meshb, meshy, meshp, meshc, meshg,meshbl,base]) # Add mesh
+#meshtt = mesht.merge(base)
+mesh_clean = mesht.clean()
+mesh_clean.points /= 10
+
 # ----------- Visualice the mesh
 p = pv.Plotter()
 # p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
@@ -357,6 +347,6 @@ p.show()
 
 
 polydata = mesh_clean.extract_geometry()
-stl_file = 'coe.stl'
+stl_file = 'co1.stl'
 polydata.save(stl_file)
 print("se guardo la imagen como: ", stl_file)
