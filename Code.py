@@ -347,6 +347,6 @@ p.show()
 
 
 polydata = mesh_clean.extract_geometry()
-stl_file = 'co1.stl'
+stl_file = 'cobe1.stl'
 polydata.save(stl_file)
 print("se guardo la imagen como: ", stl_file)
