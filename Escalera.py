@@ -32,7 +32,7 @@ for i in range(num_tiras):
     end_x = (i + 1) * strip_width + i * espacio
 
     for x in range(start_x, end_x):
-        if x < width:  # Asegurarse de que no se salga de los límites de la imagen
+        if x < width:
             pixels[:, x] = colors[i]  # Color de la tira
 plt.imshow(pixels)
 plt.show()
@@ -42,7 +42,7 @@ plt.imsave("imagen_referencia.png", pixels)'''
 # ---------Extraccion de canales y asignacion de alturas----
 
 # Cargo imagen creada
-imagen_original = cv2.imread("imagen_referencia.png")   # cambiar para las distintas imagenes
+imagen_original = cv2.imread("imagen_referencia.png")  # Se debe cambiar por la imagen que quiere transformarse
 imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape
@@ -131,7 +131,7 @@ for i in range(h):
         # Rojo Claro
         if 100 >= pR and 10 >= pG >= 0 and 50 >= pB >= 0:
             pr[i, j] = pixel
-            if pixel[0]==0 and pixel[1]==0 and pixel[2]==0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
                 zbl[i, j] = 10
@@ -139,11 +139,10 @@ for i in range(h):
                 x[i, j] = j
                 y[i, j] = i
                 zr[i, j] = 90
-            
             # Rojo
         elif 100 >= pR and 10 >= pG >= 0 and 30 >= pB >= 0:
             pr[i, j] = pixel
-            if pixel[0]==0 and pixel[1]==0 and pixel[2]==0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
                 zbl[i, j] = 10
@@ -153,9 +152,8 @@ for i in range(h):
                 zr[i, j] = 80
             # Rojo Oscuro
         elif 50 >= pR >= 10 and 5 >= pG >= 0 and 10 >= pB >= 0:
-            
             pr[i, j] = pixel
-            if pixel[0]==0 and pixel[1]==0 and pixel[2]==0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
                 zbl[i, j] = 10
@@ -295,7 +293,7 @@ for i in range(h):
                 y[i, j] = i
                 zc[i, j] = 40
             pc[i, j] = pixel
-            #Amarillo claro
+            # Amarillo claro
         elif 100 >= pR >= 80 and 100 >= pG >= 80 and 60 >= pB >= 30:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
@@ -306,7 +304,7 @@ for i in range(h):
                 y[i, j] = i
                 zy[i, j] = 70
             py[i, j] = pixel
-           #Amarillo 
+            # Amarillo
         elif 100 >= pR >= 80 and 100 >= pG >= 80 and 20 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
@@ -317,7 +315,7 @@ for i in range(h):
                 y[i, j] = i
                 zy[i, j] = 50
             py[i, j] = pixel
-            #Amarillo Oscuro
+            # Amarillo Oscuro
         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
@@ -328,7 +326,7 @@ for i in range(h):
                 y[i, j] = i
                 zy[i, j] = 40
             py[i, j] = pixel
-            #Negro
+            # Negro
         elif pR == 0 and pG == 0 and pB == 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
@@ -340,7 +338,7 @@ for i in range(h):
                 zbl[i, j] = 30
             pbl[i, j] = pixel
         else:
-            pe[i,j]=pixel
+            pe[i, j] = pixel
 
 # Muestra los canales
 plt.figure(figsize=(12, 6))
@@ -365,7 +363,7 @@ plt.subplot(3, 3, 5)
 plt.title('Canal Cyan')
 plt.imshow(pc, cmap='gray')
 
-plt.subplot(3,3, 6)
+plt.subplot(3, 3, 6)
 plt.title('Canal Yellow')
 plt.imshow(py, cmap='gray')
 
@@ -379,7 +377,7 @@ plt.imshow(pbl, cmap='gray')
 
 plt.subplot(3, 3, 9)
 plt.title('EXTRA')
-plt.imshow(pe, cmap='gray') 
+plt.imshow(pe, cmap='gray')
 plt.show()
 # Estructura 3D
 
@@ -436,7 +434,7 @@ p.add_mesh(meshg, color="green")
 p.add_mesh(meshc, color="lightblue")
 p.add_mesh(meshb, color="blue")
 p.add_mesh(meshbl, color="black")
-#p.add_mesh(mesht, color='lightblue')
+# p.add_mesh(mesht, color='lightblue')
 p.show()
 
 polydata = mesht.extract_geometry()
