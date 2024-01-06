@@ -323,16 +323,14 @@ meshbl = StructuredGrid(-xi, yi, zbll)  # mesh black
 meshy = StructuredGrid(-xi, yi, zyy)  # mesh yellow
 meshw = StructuredGrid(-xi, yi, zww) # mesh white
 base = StructuredGrid(-x_base, y_base, zbl)
-base2 = StructuredGrid(-x_base, y_base, z_base)
-mesht = pv.merge([meshw, meshr, meshb, meshy, meshp, meshc, meshg,meshbl,base]) # Add mesh
-#meshtt = mesht.merge(base)
+mesht = pv.merge([meshw, meshr, meshb, meshy, meshp, meshc, meshg, meshbl, base]) # Add mesh
 mesh_clean = mesht.clean()
 mesh_clean.points /= 10
 
 # ----------- Visualice the mesh
 p = pv.Plotter()
 # p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
-#       line_width=None, opacity=2.0)
+#             line_width=None, opacity=2.0)
 # p.add_mesh(meshw, color="white")
 # p.add_mesh(meshr, color="red")
 # p.add_mesh(meshp, color="magenta")
@@ -342,7 +340,7 @@ p = pv.Plotter()
 # p.add_mesh(meshb, color="blue")
 # p.add_mesh(meshbl, color="black")
 p.add_mesh(mesh_clean, color='lightblue')
-# p.add_floor()
+#p.add_floor()
 p.show()
 
 
