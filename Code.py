@@ -58,7 +58,7 @@ for i in range(h):
                 zw[i, j] = 100
             pw[i, j] = pixel
         # Rojo Claro
-        if 100 >= pR >= 20 and 10 >= pG >= 0 and 50 >= pB >= 0:
+        if 100 >= pR >= 20 and 30 >= pG >= 0 and 50 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
@@ -69,7 +69,7 @@ for i in range(h):
                 y[i, j] = i
                 zr[i, j] = 90
             # Rojo
-        elif 100 >= pR >= 20 and 10 >= pG >= 0 and 30 >= pB >= 0:
+        elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
@@ -91,7 +91,7 @@ for i in range(h):
                 y[i, j] = i
                 zr[i, j] = 70
             # Verde Claro
-        elif 85 >= pR >= 5 and 100 >= pG >= 70 and 65 >= pB >= 5:
+        elif 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -102,7 +102,7 @@ for i in range(h):
                 zg[i, j] = 40
             pg[i, j] = pixel
             # Verde
-        elif 80 >= pR >= 5 and 100 >= pG >= 50 and 50 >= pB >= 0:
+        elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -113,7 +113,7 @@ for i in range(h):
                 zg[i, j] = 30
             pg[i, j] = pixel
             # Verde Oscuro
-        elif 40 >= pR >= 0 and 70 >= pG >= 25 and 45 >= pB >= 0:
+        elif 75 >= pR >= 0 and 75 >= pG >= 50 and 45 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -157,7 +157,7 @@ for i in range(h):
                 zb[i, j] = 10
             pb[i, j] = pixel
             # Magenta Claro
-        elif 100 >= pR >= 70 and 40 >= pG >= 15 and 100 >= pB >= 10:
+        elif 100 >= pR >= 70 and 40 >= pG >= 15 and 100 >= pB >= 70:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -168,7 +168,7 @@ for i in range(h):
                 zp[i, j] = 50
             pp[i, j] = pixel
             # Magenta
-        elif 100 >= pR >= 60 and 30 >= pG >= 0 and 100 >= pB >= 10:
+        elif 100 >= pR >= 80 and 30 >= pG >= 0 and 100 >= pB >= 80:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -179,7 +179,7 @@ for i in range(h):
                 zp[i, j] = 60
             pp[i, j] = pixel
             # Magenta Oscuro
-        elif 100 >= pR >= 30 and 30 >= pG >= 0 and 100 >= pB >= 5:
+        elif 100 >= pR >= 30 and 30 >= pG >= 0 and 100 >= pB >= 30:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -223,7 +223,7 @@ for i in range(h):
                 zc[i, j] = 40
             pc[i, j] = pixel
             # Amarillo claro
-        elif 100 >= pR >= 80 and 100 >= pG >= 60 and 60 >= pB >= 10:
+        elif 100 >= pR >= 80 and 100 >= pG >= 60 and 70 >= pB >= 20:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -234,7 +234,7 @@ for i in range(h):
                 zy[i, j] = 70
             py[i, j] = pixel
         # Amarillo
-        elif 100 >= pR >= 70 and 100 >= pG >= 60 and 20 >= pB >= 0:
+        elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -256,7 +256,7 @@ for i in range(h):
                 zy[i, j] = 40
             py[i, j] = pixel
         # Marron Claro
-        elif 100 >= pR >= 70 and 60 >= pG >= 40 and 30 >= pB >= 10:
+        elif 100 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -278,7 +278,7 @@ for i in range(h):
                 zbr[i, j] = 40
             pbr[i, j] = pixel
         # Marron Oscuro
-        elif 60 >= pR >= 30 and 35 >= pG >= 15 and 10 >= pB >= 0:
+        elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -289,7 +289,7 @@ for i in range(h):
                 zbr[i, j] = 40
             pbr[i, j] = pixel
         # Naranja Claro
-        elif 100 >= pR >= 70 and 65 >= pG >= 30 and 5 >= pB >= 0:
+        elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -299,8 +299,19 @@ for i in range(h):
                 y[i, j] = i
                 zo[i, j] = 40
             po[i, j] = pixel
-        # naranja
-        elif 80 >= pR >= 60 and 40 >= pG >= 30 and 50 >= pB >= 0:
+        # Naranja Medio
+        elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                zbl[i, j] = 10
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                zo[i, j] = 40
+            po[i, j] = pixel
+        # Naranja Oscuro
+        elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
