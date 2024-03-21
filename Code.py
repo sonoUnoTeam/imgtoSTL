@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread('WMAP_2008.png')
+imagen_original = cv2.imread('wmapp.png')
 imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 # Extract image matrix
 matriz = np.asarray(imagen_rgb)
