@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = 'decrease (1).png'
+img_path = 'zyro.png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
@@ -25,32 +25,33 @@ for i in range(h):
 
 plt.imshow(matriz_mod, cmap='gray', vmin=0, vmax=255)
 plt.title("Blanco(0) y Negro(1)")
-# plt.show()
+plt.show()
 
 # -------------------- Agrandar lineas -----------------------------
-mask = np.array([[1, 0, 1],
-                 [0, 0, 0],
-                 [1, 0, 1]])
+# mask = np.array([[1, 0, 1],
+#                  [0, 0, 0],
+#                  [1, 0, 1]])
 
-alto, ancho = matriz_mod.shape
-img_mask = matriz_mod.copy()
+# alto, ancho = matriz_mod.shape
+# img_mask = matriz_mod.copy()
 
-# Aplicar la máscara a píxeles blancos
-for y in range(alto):
-    for x in range(ancho):
-        if matriz_mod[y, x] > 0:  # Si el píxel es blanco se aplica la mascara
-            for i in range(-3, 3):  # Usamos el -3 para centrar la mascara
-                for j in range(-3, 3):
-                    img_mask[y + i, x + j] = 255  # Píxel en blanco
+# # Aplicar la máscara a píxeles blancos
+# for y in range(alto):
+#     for x in range(ancho):
+#         if matriz_mod[y, x] > 0:  # Si el píxel es blanco se aplica la mascara
+#             for i in range(-3, 3):  # Usamos el -3 para centrar la mascara
+#                 for j in range(-3, 3):
+#                     img_mask[y + i, x + j] = 255  # Píxel en blanco
 
-plt.imshow(img_mask, cmap='gray', vmin=0, vmax=255)
+# plt.imshow(img_mask, cmap='gray', vmin=0, vmax=255)
 # plt.show()
 
 # ---------- Visualizar en 3d y cambiar altura a los blancos con pyVista
 # Crear una copia de la matriz
-matriz2d = img_mask.copy()
-alto_m, ancho_m = img_mask.shape
-
+# matriz2d = img_mask.copy()
+# alto_m, ancho_m = img_mask.shape
+matriz2d = matriz_mod.copy()
+alto_m, ancho_m = matriz_mod.shape
 # Creo variables para luego agregar las alturas
 x = np.zeros((alto_m, ancho_m))
 y = np.zeros((alto_m, ancho_m))
@@ -59,7 +60,7 @@ z = np.zeros((alto_m, ancho_m))
 # Creo un bucle for para agregarle las alturas dependiendo el valor de pixel
 for i in range(alto_m):
     for j in range(ancho_m):
-        pixel = img_mask[i, j]
+        pixel = matriz_mod[i, j]
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
         if pixel == 255:  # Si el pixel es blanco, establece la altura en 3
@@ -88,22 +89,22 @@ p.show()
 
 # ------Para guarda la estructura a stl y guardarlo en carpeta imagenes_3d
 
-polydata = mesh.extract_geometry()
-nombre_archivo = input('coloque nombre de archivo para guardar stl: ')
-stl_file = nombre_archivo+'.stl'
-polydata.save(stl_file)
-ruta_archivo_stl = stl_file
+# polydata = mesh.extract_geometry()
+# nombre_archivo = input('coloque nombre de archivo para guardar stl: ')
+# stl_file = nombre_archivo+'.stl'
+# polydata.save(stl_file)
+# ruta_archivo_stl = stl_file
 
-# Ruta de la carpeta donde deseas guardar el archivo STL
-carpeta_destino = 'imagenes_3d'
+# # Ruta de la carpeta donde deseas guardar el archivo STL
+# carpeta_destino = 'imagenes_3d'
 
-# Asegurarse de que la carpeta de destino exista, si no, crearla
-if not os.path.exists(carpeta_destino):
-    os.makedirs(carpeta_destino)
+# # Asegurarse de que la carpeta de destino exista, si no, crearla
+# if not os.path.exists(carpeta_destino):
+#     os.makedirs(carpeta_destino)
 
-# Ruta completa de destino del archivo STL
-ruta_destino_stl = os.path.join(carpeta_destino, os.path.basename(ruta_archivo_stl))
+# # Ruta completa de destino del archivo STL
+# ruta_destino_stl = os.path.join(carpeta_destino, os.path.basename(ruta_archivo_stl))
 
-# Mover el archivo STL a la carpeta de destino
-os.rename(ruta_archivo_stl, ruta_destino_stl)
-print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
+# # Mover el archivo STL a la carpeta de destino
+# os.rename(ruta_archivo_stl, ruta_destino_stl)
+# print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
