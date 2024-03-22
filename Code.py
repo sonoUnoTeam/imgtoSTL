@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread('wmapp.png')
+imagen_original = cv2.imread('cobe.png')
 imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 # Extract image matrix
 matriz = np.asarray(imagen_rgb)
@@ -45,7 +45,7 @@ for i in range(h):
         pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
         pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
         # Blanco
-        if pR == 100 and pG == 100 and pB == 100:
+        if pR >= 65 and pG == 100 and pB >= 65:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -65,7 +65,7 @@ for i in range(h):
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 62
+                zr[i, j] = 64
             # Rojo
         elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
             pr[i, j] = pixel
@@ -76,7 +76,7 @@ for i in range(h):
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 63
+                zr[i, j] = 67
             # Rojo Oscuro
         elif 70 >= pR >= 20 and 25 >= pG >= 0 and 10 >= pB >= 0:
             pr[i, j] = pixel
@@ -87,7 +87,7 @@ for i in range(h):
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 62
+                zr[i, j] = 70
             # Verde Claro
         elif 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
@@ -111,7 +111,7 @@ for i in range(h):
                 zg[i, j] = 40
             pg[i, j] = pixel
             # Verde Oscuro
-        elif 75 >= pR >= 0 and 75 >= pG >= 50 and 45 >= pB >= 0:
+        elif 75 >= pR >= 0 and 75 >= pG >= 30 and 45 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -188,7 +188,7 @@ for i in range(h):
                 zp[i, j] = 65
             pp[i, j] = pixel
             # Cian Claro
-        elif 65 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
+        elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
@@ -253,6 +253,39 @@ for i in range(h):
                 y[i, j] = i
                 zy[i, j] = 52
             py[i, j] = pixel
+        # Marron Claro
+        elif 100 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                zbr[i, j] = 5
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                zbr[i, j] = 51
+            pbr[i, j] = pixel
+        # Marron
+        elif 80 >= pR >= 50 and 60 >= pG >= 35 and 10 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                zbr[i, j] = 5
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                zbr[i, j] = 52
+            pbr[i, j] = pixel
+        # Marron Oscuro
+        elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                zbr[i, j] = 5
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                zbr[i, j] = 53
+            pbr[i, j] = pixel
             # Naranja Claro
         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
@@ -299,8 +332,8 @@ for i in range(h):
 plt.figure(figsize=(12, 6))
 
 plt.subplot(3, 3, 1)
-plt.title('Imagen Original')
-plt.imshow(imagen_rgb, cmap='gray')
+plt.title('Canal Marron')
+plt.imshow(pbr, cmap='gray')
 
 plt.subplot(3, 3, 2)
 plt.title('Canal Rojo')
