@@ -35,16 +35,16 @@ mask = np.array([[1, 0, 1],
 alto, ancho = matriz_mod.shape
 img_mask = matriz_mod.copy()
 
-# Aplicar la máscara a píxeles blancos
-for y in range(alto):
-    for x in range(ancho):
-        if matriz_mod[y, x] > 0:  # Si el píxel es blanco se aplica la mascara
-            for i in range(-3, 3):  # Usamos el -3 para centrar la mascara
-                for j in range(-3, 3):
-                    img_mask[y + i, x + j] = 255  # Píxel en blanco
+# # Aplicar la máscara a píxeles blancos
+# for y in range(alto):
+#     for x in range(ancho):
+#         if matriz_mod[y, x] > 0:  # Si el píxel es blanco se aplica la mascara
+#             for i in range(-3, 3):  # Usamos el -3 para centrar la mascara
+#                 for j in range(-3, 3):
+#                     img_mask[y + i, x + j] = 255  # Píxel en blanco
 
-plt.imshow(img_mask, cmap='gray', vmin=0, vmax=255)
-plt.show()
+# plt.imshow(img_mask, cmap='gray', vmin=0, vmax=255)
+# plt.show()
 
 # ---------- Visualizar en 3d y cambiar altura a los blancos con pyVista
 # Crear una copia de la matriz
@@ -63,9 +63,9 @@ for i in range(alto_m):
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
         if pixel == 255:  # Si el pixel es blanco, establece la altura en 3
-            z[i, j] = 10  # Altura Z
+            z[i, j] = 20  # Altura Z
         else:  # Si el pixel es negro, establece la altura en 2
-            z[i, j] = 5  # Altura Z
+            z[i, j] = 15  # Altura Z
 
 
 # Creo una base con altura 0 y con igual dimesiones que la original
@@ -88,22 +88,26 @@ p.show()
 
 # ------Para guarda la estructura a stl y guardarlo en carpeta imagenes_3d
 
+# polydata = mesh.extract_geometry()
+# nombre_archivo = input('coloque nombre de archivo para guardar stl: ')
+# stl_file = nombre_archivo+'.stl'
+# polydata.save(stl_file)
+# ruta_archivo_stl = stl_file
+
+# #Ruta de la carpeta donde deseas guardar el archivo STL
+# carpeta_destino = 'imagenes_3d'
+
+# #Asegurarse de que la carpeta de destino exista, si no, crearla
+# if not os.path.exists(carpeta_destino):
+#     os.makedirs(carpeta_destino)
+
+# #Ruta completa de destino del archivo STL
+# ruta_destino_stl = os.path.join(carpeta_destino, os.path.basename(ruta_archivo_stl))
+
+# #Mover el archivo STL a la carpeta de destino
+# os.rename(ruta_archivo_stl, ruta_destino_stl)
+# print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
 polydata = mesh.extract_geometry()
-nombre_archivo = input('coloque nombre de archivo para guardar stl: ')
-stl_file = nombre_archivo+'.stl'
+stl_file = 'braille(1).stl'
 polydata.save(stl_file)
-ruta_archivo_stl = stl_file
-
-#Ruta de la carpeta donde deseas guardar el archivo STL
-carpeta_destino = 'imagenes_3d'
-
-#Asegurarse de que la carpeta de destino exista, si no, crearla
-if not os.path.exists(carpeta_destino):
-    os.makedirs(carpeta_destino)
-
-#Ruta completa de destino del archivo STL
-ruta_destino_stl = os.path.join(carpeta_destino, os.path.basename(ruta_archivo_stl))
-
-#Mover el archivo STL a la carpeta de destino
-os.rename(ruta_archivo_stl, ruta_destino_stl)
-print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
+print("se guardo la imagen como: ", stl_file)
