@@ -63,7 +63,7 @@ for i in range(alto_m):
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
         if pixel == 255:  # Si el pixel es blanco, establece la altura en 3
-            z[i, j] = 20  # Altura Z
+            z[i, j] = 25  # Altura Z
         else:  # Si el pixel es negro, establece la altura en 2
             z[i, j] = 15  # Altura Z
 
@@ -79,7 +79,7 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-mesh.points /= 10
+#mesh.points /= 10
 
 # Mostramos la estructura
 p = pv.Plotter()
