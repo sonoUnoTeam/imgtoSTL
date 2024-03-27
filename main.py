@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = 'braille.png'
+img_path = 'abc_braille1.png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
@@ -79,7 +79,7 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-#mesh.points /= 10
+mesh.points /= 10
 
 # Mostramos la estructura
 p = pv.Plotter()
@@ -104,10 +104,10 @@ p.show()
 # #Ruta completa de destino del archivo STL
 # ruta_destino_stl = os.path.join(carpeta_destino, os.path.basename(ruta_archivo_stl))
 
-# #Mover el archivo STL a la carpeta de destino
-# os.rename(ruta_archivo_stl, ruta_destino_stl)
-# print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
-polydata = mesh.extract_geometry()
-stl_file = 'braille(1).stl'
-polydata.save(stl_file)
-print("se guardo la imagen como: ", stl_file)
+# # #Mover el archivo STL a la carpeta de destino
+# # os.rename(ruta_archivo_stl, ruta_destino_stl)
+# # print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
+# polydata = mesh.extract_geometry()
+# stl_file = 'braille_dimensionado_newimg.stl'
+# polydata.save(stl_file)
+# print("se guardo la imagen como: ", stl_file)
