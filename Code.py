@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread('wmap_1.png')
+imagen_original = cv2.imread('wmapp.png')
 imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 # Extract image matrix
 matriz = np.asarray(imagen_rgb)
@@ -38,7 +38,7 @@ zw = np.zeros((h, w))
 zbr = np.zeros((h, w))
 zo = np.zeros((h, w))
 zv = np.zeros((h, w))
-# #-----------------Clasificacion para WMAPP------------------------------
+# # #-----------------Clasificacion para WMAPP------------------------------
 # for i in range(h):
 #     for j in range(w):
 #         pixel = imagen_rgb[i, j]
@@ -68,7 +68,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 64
+#                 zr[i, j] = 58
 #             # Rojo
 #         elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
 #             pr[i, j] = pixel
@@ -79,7 +79,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 67
+#                 zr[i, j] = 59
 #             # Rojo Oscuro
 #         elif 70 >= pR >= 20 and 25 >= pG >= 0 and 10 >= pB >= 0:
 #             pr[i, j] = pixel
@@ -90,7 +90,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 70
+#                 zr[i, j] = 60
 #             # Verde Claro
 #         elif 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
@@ -100,7 +100,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 43
+#                 zg[i, j] = 49
 #             pg[i, j] = pixel
 #             # Verde
 #         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
@@ -111,7 +111,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 40
+#                 zg[i, j] = 48
 #             pg[i, j] = pixel
 #             # Verde Oscuro
 #         elif 75 >= pR >= 0 and 75 >= pG >= 30 and 45 >= pB >= 0:
@@ -122,7 +122,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 37
+#                 zg[i, j] = 47
 #             pg[i, j] = pixel
 #             # Azul Claro
 #         elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
@@ -133,7 +133,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 25
+#                 zb[i, j] = 43
 #             pb[i, j] = pixel
 #             # azul
 #         elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
@@ -144,7 +144,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 22
+#                 zb[i, j] = 42
 #             pb[i, j] = pixel
 #             # Azul Oscuro
 #         elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
@@ -155,42 +155,9 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 19
+#                 zb[i, j] = 41
 #             pb[i, j] = pixel
-#             # Magenta Claro
-#         elif 100 >= pR >= 70 and 40 >= pG >= 15 and 100 >= pB >= 70:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 5
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 50
-#             pp[i, j] = pixel
-#             # Magenta
-#         elif 100 >= pR >= 80 and 30 >= pG >= 0 and 100 >= pB >= 80:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 5
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 60
-#             pp[i, j] = pixel
-#             # Magenta Oscuro
-#         elif 100 >= pR >= 30 and 30 >= pG >= 0 and 100 >= pB >= 30:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 5
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 65
-#             pp[i, j] = pixel
-#             # Cian Claro
+#              # Cian Claro
 #         elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
@@ -199,7 +166,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 34
+#                 zc[i, j] = 46
 #             pc[i, j] = pixel
 #             # Cian
 #         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
@@ -210,7 +177,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 31
+#                 zc[i, j] = 45
 #             pc[i, j] = pixel
 #             # Cian Oscuro
 #         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
@@ -221,7 +188,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 28
+#                 zc[i, j] = 44
 #             pc[i, j] = pixel
 #             # Amarillo claro
 #         elif 100 >= pR >= 80 and 100 >= pG >= 60 and 70 >= pB >= 20:
@@ -232,7 +199,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 46
+#                 zy[i, j] = 50
 #             py[i, j] = pixel
 #         # Amarillo
 #         elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
@@ -243,7 +210,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 49
+#                 zy[i, j] = 51
 #             py[i, j] = pixel
 #             # Amarillo Oscuro
 #         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
@@ -265,7 +232,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 51
+#                 zbr[i, j] = 56
 #             pbr[i, j] = pixel
 #         # Marron
 #         elif 80 >= pR >= 50 and 60 >= pG >= 35 and 10 >= pB >= 0:
@@ -276,7 +243,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 52
+#                 zbr[i, j] = 57
 #             pbr[i, j] = pixel
 #         # Marron Oscuro
 #         elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
@@ -287,7 +254,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 53
+#                 zbr[i, j] = 58
 #             pbr[i, j] = pixel
 #             # Naranja Claro
 #         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
@@ -298,7 +265,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 55
+#                 zo[i, j] = 53
 #             po[i, j] = pixel
 #         # Naranja Medio
 #         elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
@@ -309,7 +276,7 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 58
+#                 zo[i, j] = 54
 #             po[i, j] = pixel
 #         # Naranja Oscuro
 #         elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
@@ -320,13 +287,13 @@ zv = np.zeros((h, w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 61
+#                 zo[i, j] = 55
 #             po[i, j] = pixel
 #             # Negro
 #         elif pR == 0 and pG == 0 and pB == 0:
 #             x[i, j] = j
 #             y[i, j] = i
-#             zbl[i, j] = 16
+#             zbl[i, j] = 40
 #             pbl[i, j] = pixel
 #         else:
 #             pe[i, j] = pixel
@@ -521,7 +488,7 @@ for i in range(h):
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 64
+                zr[i, j] = 62
             # Rojo
         elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
             pr[i, j] = pixel
@@ -532,7 +499,7 @@ for i in range(h):
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 67
+                zr[i, j] = 63
             # Rojo Oscuro
         elif 70 >= pR >= 20 and 25 >= pG >= 0 and 10 >= pB >= 0:
             pr[i, j] = pixel
@@ -543,7 +510,7 @@ for i in range(h):
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 70
+                zr[i, j] = 74
             # Verde Claro
         elif 85 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
@@ -850,7 +817,7 @@ mesho = StructuredGrid(-xi, yi, zoo, force_float=False)  # mesh orange
 meshbr = StructuredGrid(-xi, yi, zbrr, force_float=False)  # mesh brown
 meshv = StructuredGrid(-xi, yi, zvr, force_float=False)
 base = StructuredGrid(-x_base, y_base, zbl, force_float=False)
-mesht = pv.merge([meshb, meshy, meshc, meshg, meshbl,meshv, base]) # Add mesh
+mesht = pv.merge([meshr, meshb, meshy, meshc, meshg, mesho, meshbr, meshbl,meshv,meshw, base]) # Add mesh
 mesh_clean = mesht.clean()
 mesh_clean.points /= 10
 
@@ -858,23 +825,23 @@ mesh_clean.points /= 10
 p = pv.Plotter()
 # p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
 #         line_width=None, opacity=2.0)
-p.add_mesh(meshw, color="white")
-p.add_mesh(meshr, color="red")
-p.add_mesh(meshp, color="magenta")
-p.add_mesh(meshy, color="yellow")
-p.add_mesh(meshg, color="green")
-p.add_mesh(meshc, color="cyan")
-p.add_mesh(meshb, color="blue")
-p.add_mesh(meshbl, color="black")
-p.add_mesh(meshbr, color="brown")
-p.add_mesh(mesho, color="orange")
-p.add_mesh(meshv, color="purple")
-# p.add_mesh(mesh_clean, color='lightblue')
+# p.add_mesh(meshw, color="white")
+# p.add_mesh(meshr, color="red")
+# p.add_mesh(meshp, color="magenta")
+# p.add_mesh(meshy, color="yellow")
+# p.add_mesh(meshg, color="green")
+# p.add_mesh(meshc, color="cyan")
+# p.add_mesh(meshb, color="blue")
+# p.add_mesh(meshbl, color="black")
+# p.add_mesh(meshbr, color="brown")
+# p.add_mesh(mesho, color="orange")
+# p.add_mesh(meshv, color="purple")
+p.add_mesh(mesh_clean, color='lightblue')
 # p.add_floor()
 p.show()
 
 
-# polydata = mesh_clean.extract_geometry()
-# stl_file = 'cobe1.stl'
-# polydata.save(stl_file)
-# print("se guardo la imagen como: ", stl_file)
+polydata = mesh_clean.extract_geometry()
+stl_file = 'wmapp.stl'
+polydata.save(stl_file)
+print("se guardo la imagen como: ", stl_file)
