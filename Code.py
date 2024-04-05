@@ -52,11 +52,11 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zw[i, j] = 5
+#                 zw[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zw[i, j] = 5
+#                 zw[i, j] = 10
 #             pw[i, j] = pixel
 #         # Rojo Claro
 #         if 100 >= pR >= 20 and 30 >= pG >= 0 and 50 >= pB >= 0:
@@ -64,7 +64,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 5
+#                 zr[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -75,7 +75,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 5
+#                 zr[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -86,7 +86,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 5
+#                 zr[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -96,18 +96,18 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 5
+#                 zg[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
 #                 zg[i, j] = 49
 #             pg[i, j] = pixel
 #             # Verde
-#         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
+#         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 100 >= pB >= 0:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 5
+#                 zg[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -118,7 +118,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 5
+#                 zg[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -129,7 +129,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 5
+#                 zb[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -140,7 +140,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 5
+#                 zb[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -151,7 +151,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 5
+#                 zb[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -162,7 +162,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 5
+#                 zc[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -184,7 +184,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 5
+#                 zc[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -195,7 +195,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 5
+#                 zy[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -206,7 +206,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 5
+#                 zy[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -217,7 +217,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 5
+#                 zy[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -228,7 +228,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 5
+#                 zbr[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -239,7 +239,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 5
+#                 zbr[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -250,7 +250,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 5
+#                 zbr[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -261,7 +261,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 5
+#                 zo[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -272,7 +272,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 5
+#                 zo[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -283,7 +283,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 5
+#                 zo[i, j] = 10
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -472,11 +472,11 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zw[i, j] = 5
+                zw[i, j] = 15
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zw[i, j] = 5
+                zw[i, j] = 15
             pw[i, j] = pixel
         # Rojo Claro
         if 100 >= pR >= 50 and 30 >= pG >= 0 and 50 >= pB >= 0:
@@ -787,29 +787,29 @@ meshbl = StructuredGrid(-xi, yi, zbll, force_float=False)  # mesh black
 meshv = StructuredGrid(-xi, yi, zvr, force_float=False)
 base = StructuredGrid(-x_base, y_base, zbl, force_float=False)
 mesht = pv.merge([meshr, meshb, meshy, meshc, meshg, mesho, meshbr, meshbl,meshv,meshw, base]) # Add mesh
-# mesh_clean = mesht.clean()
-# mesh_clean.points /= 10
+mesh_clean = mesht.clean()
+#mesh_clean.points /= 10
 
 # ----------- Visualice the mesh
 p = pv.Plotter()
 # p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
 #         line_width=None, opacity=2.0)
-p.add_mesh(meshw, color="white")
-p.add_mesh(meshr, color="red")
-p.add_mesh(meshy, color="yellow")
-p.add_mesh(meshg, color="green")
-p.add_mesh(meshc, color="cyan")
-p.add_mesh(meshb, color="blue")
-p.add_mesh(meshbl, color="black")
-p.add_mesh(meshbr, color="brown")
-p.add_mesh(mesho, color="orange")
-p.add_mesh(meshv, color="purple")
-#p.add_mesh(mesh_clean, color='lightblue')
+# p.add_mesh(meshw, color="white")
+# p.add_mesh(meshr, color="red")
+# p.add_mesh(meshy, color="yellow")
+# p.add_mesh(meshg, color="green")
+# p.add_mesh(meshc, color="cyan")
+# p.add_mesh(meshb, color="blue")
+# p.add_mesh(meshbl, color="black")
+# p.add_mesh(meshbr, color="brown")
+# p.add_mesh(mesho, color="orange")
+# p.add_mesh(meshv, color="purple")
+p.add_mesh(mesh_clean, color='lightblue')
 # p.add_floor()
 p.show()
 
 
 # polydata = mesh_clean.extract_geometry()
-# stl_file = 'wmapp.stl'
+# stl_file = 'wmapverdes.stl'
 # polydata.save(stl_file)
 # print("se guardo la imagen como: ", stl_file)

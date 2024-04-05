@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = 'fc_braille.png'
+img_path = 'crecienteplot-braille.png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
@@ -79,7 +79,7 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-mesh.points /= 10
+#mesh.points /= 10
 
 # Mostramos la estructura
 p = pv.Plotter()
@@ -108,6 +108,6 @@ p.show()
 # # os.rename(ruta_archivo_stl, ruta_destino_stl)
 # # print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
 # polydata = mesh.extract_geometry()
-# stl_file = 'braille_dimensionado_newimg.stl'
+# stl_file = 'crecienteplot-braille.stl'
 # polydata.save(stl_file)
 # print("se guardo la imagen como: ", stl_file)
