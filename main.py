@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = 'abc_braille1.png'
+img_path = 'fc_braille.png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
