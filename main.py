@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = 'crecienteplot-braille.png'
+img_path = 'crecienteplot-braille (1).png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
@@ -28,19 +28,19 @@ plt.title("Blanco(0) y Negro(1)")
 plt.show()
 
 # -------------------- Agrandar lineas -----------------------------
-mask = np.array([[1, 0, 1],
-                 [0, 0, 0],
-                 [1, 0, 1]])
+# mask = np.array([[1, 0, 1],
+#                  [0, 0, 0],
+#                  [1, 0, 1]])
 
 alto, ancho = matriz_mod.shape
 img_mask = matriz_mod.copy()
 
-# # Aplicar la máscara a píxeles blancos
+# # # Aplicar la máscara a píxeles blancos
 # for y in range(alto):
 #     for x in range(ancho):
 #         if matriz_mod[y, x] > 0:  # Si el píxel es blanco se aplica la mascara
-#             for i in range(-3, 3):  # Usamos el -3 para centrar la mascara
-#                 for j in range(-3, 3):
+#             for i in range(-2, 1):  # Usamos el -3 para centrar la mascara
+#                 for j in range(-2, 1):
 #                     img_mask[y + i, x + j] = 255  # Píxel en blanco
 
 # plt.imshow(img_mask, cmap='gray', vmin=0, vmax=255)
@@ -63,9 +63,9 @@ for i in range(alto_m):
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
         if pixel == 255:  # Si el pixel es blanco, establece la altura en 3
-            z[i, j] = 25  # Altura Z
+            z[i, j] = 6  # Altura Z
         else:  # Si el pixel es negro, establece la altura en 2
-            z[i, j] = 15  # Altura Z
+            z[i, j] = 3  # Altura Z
 
 
 # Creo una base con altura 0 y con igual dimesiones que la original
@@ -79,7 +79,7 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-#mesh.points /= 10
+mesh.points /= 4
 
 # Mostramos la estructura
 p = pv.Plotter()
@@ -107,7 +107,7 @@ p.show()
 # # #Mover el archivo STL a la carpeta de destino
 # # os.rename(ruta_archivo_stl, ruta_destino_stl)
 # # print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
-# polydata = mesh.extract_geometry()
-# stl_file = 'crecienteplot-braille.stl'
-# polydata.save(stl_file)
-# print("se guardo la imagen como: ", stl_file)
+polydata = mesh.extract_geometry()
+stl_file = 'crecienteplot-braille1.stl'
+polydata.save(stl_file)
+print("se guardo la imagen como: ", stl_file)
