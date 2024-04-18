@@ -27,6 +27,7 @@ po = np.zeros((h, w, c), dtype=np.uint8)
 pvi = np.zeros((h, w, c), dtype=np.uint8)
 x = np.zeros((h, w))
 y = np.zeros((h, w))
+z = np.zeros((h,w))
 zr = np.zeros((h, w))
 zb = np.zeros((h, w))
 zg = np.zeros((h, w))
@@ -52,11 +53,11 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zw[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zw[i, j] = 10
+                z[i, j] = 6
             pw[i, j] = pixel
         # Rojo Claro
         if 100 >= pR >= 20 and 30 >= pG >= 0 and 50 >= pB >= 0:
@@ -64,236 +65,236 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 58
+                z[i, j] = 48
             # Rojo
         elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 59
+                z[i, j] = 49
             # Rojo Oscuro
         elif 70 >= pR >= 20 and 25 >= pG >= 0 and 10 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zr[i, j] = 60
+                z[i, j] = 50
             # Verde Claro
         elif 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zg[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zg[i, j] = 49
+                z[i, j] = 38
             pg[i, j] = pixel
             # Verde
         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 100 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zg[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zg[i, j] = 48
+                z[i, j] = 37
             pg[i, j] = pixel
             # Verde Oscuro
         elif 75 >= pR >= 0 and 75 >= pG >= 30 and 45 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zg[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zg[i, j] = 47
+                z[i, j] = 36
             pg[i, j] = pixel
             # Azul Claro
         elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 43
+                z[i, j] = 32
             pb[i, j] = pixel
             # azul
         elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 42
+                z[i, j] = 31
             pb[i, j] = pixel
             # Azul Oscuro
         elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zb[i, j] = 41
+                z[i, j] = 30
             pb[i, j] = pixel
              # Cian Claro
         elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zc[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zc[i, j] = 46
+                z[i, j] = 35
             pc[i, j] = pixel
             # Cian
         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zc[i, j] = 5
+                z[i, j] = 5
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zc[i, j] = 45
+                z[i, j] = 34
             pc[i, j] = pixel
             # Cian Oscuro
         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zc[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zc[i, j] = 44
+                z[i, j] = 33
             pc[i, j] = pixel
             # Amarillo claro
         elif 100 >= pR >= 80 and 100 >= pG >= 60 and 70 >= pB >= 20:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zy[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zy[i, j] = 50
+                z[i, j] = 39
             py[i, j] = pixel
         # Amarillo
         elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zy[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zy[i, j] = 51
+                z[i, j] = 40
             py[i, j] = pixel
             # Amarillo Oscuro
         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zy[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zy[i, j] = 52
+                z[i, j] = 41
             py[i, j] = pixel
         # Marron Claro
         elif 100 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbr[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zbr[i, j] = 56
+                z[i, j] = 45
             pbr[i, j] = pixel
         # Marron
         elif 80 >= pR >= 50 and 60 >= pG >= 35 and 10 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbr[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zbr[i, j] = 57
+                z[i, j] = 46
             pbr[i, j] = pixel
         # Marron Oscuro
         elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zbr[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zbr[i, j] = 58
+                z[i, j] = 47
             pbr[i, j] = pixel
             # Naranja Claro
         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zo[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zo[i, j] = 53
+                z[i, j] = 42
             po[i, j] = pixel
         # Naranja Medio
         elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zo[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zo[i, j] = 54
+                z[i, j] = 43
             po[i, j] = pixel
         # Naranja Oscuro
         elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                zo[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
-                zo[i, j] = 55
+                z[i, j] = 44
             po[i, j] = pixel
             # Negro
         elif pR == 0 and pG == 0 and pB == 0:
             x[i, j] = j
             y[i, j] = i
-            zbl[i, j] = 40
+            z[i, j] = 40
             pbl[i, j] = pixel
         else:
             pe[i, j] = pixel
@@ -311,7 +312,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 5
+#                 zy[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -333,7 +334,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 5
+#                 zy[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -344,7 +345,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 5
+#                 zg[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -355,7 +356,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 5
+#                 zg[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -366,7 +367,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 5
+#                 zg[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -377,7 +378,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zp[i, j] = 5
+#                 zp[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -388,7 +389,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 5
+#                 zb[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -399,7 +400,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 5
+#                 zb[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -410,7 +411,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 5
+#                 zb[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -422,7 +423,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 5
+#                 zc[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -433,7 +434,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 5
+#                 zc[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -444,7 +445,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 5
+#                 zc[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -454,7 +455,7 @@ for i in range(h):
 #         elif pR == 0 and pG == 0 and pB == 0:
 #             x[i, j] = j
 #             y[i, j] = i
-#             zbl[i, j] = 10
+#             zbl[i, j] = 6
 #             pbl[i, j] = pixel
 #         else:
 #             pe[i, j] = pixel
@@ -472,11 +473,11 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zw[i, j] = 10
+#                 zw[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zw[i, j] = 10
+#                 zw[i, j] = 6
 #             pw[i, j] = pixel
 #         # Rojo Claro
 #         if 100 >= pR >= 50 and 30 >= pG >= 0 and 50 >= pB >= 0:
@@ -484,7 +485,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 10
+#                 zr[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -495,7 +496,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 10
+#                 zr[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -506,7 +507,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 10
+#                 zr[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -527,7 +528,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 10
+#                 zo[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -538,7 +539,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zo[i, j] = 10
+#                 zo[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -549,7 +550,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 10
+#                 zbr[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -560,7 +561,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 10
+#                 zbr[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -571,7 +572,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zbr[i, j] = 10
+#                 zbr[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -583,7 +584,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 10
+#                 zy[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -594,7 +595,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 10
+#                 zy[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -605,7 +606,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zy[i, j] = 10
+#                 zy[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -616,7 +617,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 10
+#                 zg[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -627,7 +628,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 10
+#                 zg[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -638,7 +639,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 10
+#                 zg[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -649,7 +650,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 10
+#                 zc[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -660,7 +661,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 10
+#                 zc[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -671,7 +672,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zc[i, j] = 10
+#                 zc[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -683,7 +684,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 10
+#                 zb[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -694,7 +695,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 10
+#                 zb[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -705,7 +706,7 @@ for i in range(h):
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 10
+#                 zb[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -719,77 +720,88 @@ for i in range(h):
 #             pbl[i, j] = pixel
 #         else:
 #             pe[i, j] = pixel
-plt.figure(figsize=(12, 6))
+# plt.figure(figsize=(12, 6))
 
-plt.subplot(3, 3, 1)
-plt.title('Canal Marron')
-plt.imshow(pbr, cmap='gray')
+# plt.subplot(3, 3, 1)
+# plt.title('Canal Marron')
+# plt.imshow(pbr, cmap='gray')
 
-plt.subplot(3, 3, 2)
-plt.title('Canal Rojo')
-plt.imshow(pr, cmap='gray')
+# plt.subplot(3, 3, 2)
+# plt.title('Canal Rojo')
+# plt.imshow(pr, cmap='gray')
 
-plt.subplot(3, 3, 3)
-plt.title('Canal Naranja')
-plt.imshow(po, cmap='gray')
+# plt.subplot(3, 3, 3)
+# plt.title('Canal Naranja')
+# plt.imshow(po, cmap='gray')
 
-plt.subplot(3, 3, 4)
-plt.title('Canal Yellow')
-plt.imshow(py, cmap='gray')
+# plt.subplot(3, 3, 4)
+# plt.title('Canal Yellow')
+# plt.imshow(py, cmap='gray')
 
-plt.subplot(3, 3, 5)
-plt.title('Canal Verde')
-plt.imshow(pg, cmap='gray')
+# plt.subplot(3, 3, 5)
+# plt.title('Canal Verde')
+# plt.imshow(pg, cmap='gray')
 
-plt.subplot(3, 3, 6)
-plt.title('Canal Cyan')
-plt.imshow(pc, cmap='gray')
+# plt.subplot(3, 3, 6)
+# plt.title('Canal Cyan')
+# plt.imshow(pc, cmap='gray')
 
-plt.subplot(3, 3, 7)
-plt.title('Canal Azul')
-plt.imshow(pb, cmap='gray')
+# plt.subplot(3, 3, 7)
+# plt.title('Canal Azul')
+# plt.imshow(pb, cmap='gray')
 
-plt.subplot(3, 3, 8)
-plt.title('Canal Blanco')
-plt.imshow(pw, cmap='gray')
+# plt.subplot(3, 3, 8)
+# plt.title('Canal Blanco')
+# plt.imshow(pw, cmap='gray')
 
-plt.subplot(3, 3, 9)
-plt.title('EXTRA')
-plt.imshow(pe, cmap='gray')
-plt.show()
+# plt.subplot(3, 3, 9)
+# plt.title('EXTRA')
+# plt.imshow(pe, cmap='gray')
+# plt.show()
 
 x_base, y_base = np.meshgrid(range(w), range(h))
 z_base = np.zeros_like(x_base)
+x = np.stack((x_base, x), axis=0)
+y = np.stack((y_base, y), axis=0)
+z = np.stack((z_base, z), axis=0)
 
-xi = np.stack((x_base, x), axis=0)
-yi = np.stack((y_base, y), axis=0)
-zbll = np.stack((z_base, zbl), axis=0)  # negro
-zrr = np.stack((z_base, zr), axis=0)   # rojo
-zcc = np.stack((z_base, zc), axis=0)   # celeste
-zpp = np.stack((z_base, zp), axis=0)   # magenta
-zbb = np.stack((z_base, zb), axis=0)  # azul
-zgb = np.stack((z_base, zg), axis=0)  # verge
-zyy = np.stack((z_base, zy), axis=0)   # amarillo
-zww = np.stack((z_base, zw), axis=0)  # blanco
-zoo = np.stack((z_base, zo), axis=0)  # naranja
-zbrr = np.stack((z_base, zbr), axis=0)   # marron
-zvr = np.stack((z_base, zv), axis=0)
-meshw = StructuredGrid(-xi, yi, zww, force_float=False)  # mesh white
-meshr = StructuredGrid(-xi, yi, zrr, force_float=False)  # mesh red
-mesho = StructuredGrid(-xi, yi, zoo, force_float=False)  # mesh orange
-meshbr = StructuredGrid(-xi, yi, zbrr, force_float=False)  # mesh brown
-meshy = StructuredGrid(-xi, yi, zyy, force_float=False)  # mesh yellow
-meshp = StructuredGrid(-xi, yi, zpp, force_float=False)  # mesh magenta
-meshg = StructuredGrid(-xi, yi, zgb, force_float=False)  # mesh green
-meshc = StructuredGrid(-xi, yi, zcc, force_float=False)  # mesh cyan
-meshb = StructuredGrid(-xi, yi, zbb, force_float=False)  # mesh blue
-meshbl = StructuredGrid(-xi, yi, zbll, force_float=False)  # mesh black
-meshv = StructuredGrid(-xi, yi, zvr, force_float=False)
-base = StructuredGrid(-x_base, y_base, zbl, force_float=False)
-mesht  =  pv.merge ([ meshr , meshb , meshy , meshc , meshg , mesho , meshbr , meshbl , meshv , meshw , base ])
-#mesht = pv.merge([meshr, mesho, meshbr, meshy, meshg, meshc, meshb, meshv,meshbl,meshw, base]) # Add mesh
-mesh_clean = mesht.clean()
-mesh_clean.points /= 10
+# Creamos la estructura
+mesh = pv.StructuredGrid(-x, y, z)
+mesh.points = mesh.points * 0.25
+
+# Mostramos la estructura
+p = pv.Plotter()
+p.add_mesh(mesh, color="gray")
+p.show()
+# xi = np.stack((x_base, x), axis=0)
+# yi = np.stack((y_base, y), axis=0)
+# zbll = np.stack((z_base, zbl), axis=0)  # negro
+# zrr = np.stack((z_base, zr), axis=0)   # rojo
+# zcc = np.stack((z_base, zc), axis=0)   # celeste
+# zpp = np.stack((z_base, zp), axis=0)   # magenta
+# zbb = np.stack((z_base, zb), axis=0)  # azul
+# zgb = np.stack((z_base, zg), axis=0)  # verge
+# zyy = np.stack((z_base, zy), axis=0)   # amarillo
+# zww = np.stack((z_base, zw), axis=0)  # blanco
+# zoo = np.stack((z_base, zo), axis=0)  # naranja
+# zbrr = np.stack((z_base, zbr), axis=0)   # marron
+# zvr = np.stack((z_base, zv), axis=0)
+# meshw = StructuredGrid(-xi, yi, zww, force_float=False)  # mesh white
+# meshr = StructuredGrid(-xi, yi, zrr, force_float=False)  # mesh red
+# mesho = StructuredGrid(-xi, yi, zoo, force_float=False)  # mesh orange
+# meshbr = StructuredGrid(-xi, yi, zbrr, force_float=False)  # mesh brown
+# meshy = StructuredGrid(-xi, yi, zyy, force_float=False)  # mesh yellow
+# meshp = StructuredGrid(-xi, yi, zpp, force_float=False)  # mesh magenta
+# meshg = StructuredGrid(-xi, yi, zgb, force_float=False)  # mesh green
+# meshc = StructuredGrid(-xi, yi, zcc, force_float=False)  # mesh cyan
+# meshb = StructuredGrid(-xi, yi, zbb, force_float=False)  # mesh blue
+# meshbl = StructuredGrid(-xi, yi, zbll, force_float=False)  # mesh black
+# meshv = StructuredGrid(-xi, yi, zvr, force_float=False)
+# base = StructuredGrid(-x_base, y_base, zbl, force_float=False)
+# mesht  =  pv.merge ([ meshr , meshb , meshy , meshc , meshg , mesho , meshbr , meshbl , meshv , meshw , base ])
+# #mesht = pv.merge([meshr, mesho, meshbr, meshy, meshg, meshc, meshb, meshv,meshbl,meshw, base]) # Add mesh
+# mesh_clean = mesht.clean()
+# mesh_clean.points /= 10
 
 # ----------- Visualice the mesh
 p = pv.Plotter()
@@ -805,12 +817,12 @@ p = pv.Plotter()
 # p.add_mesh(meshbr, color="brown")
 # p.add_mesh(mesho, color="orange")
 # p.add_mesh(meshv, color="purple")
-p.add_mesh(mesh_clean, color='lightblue')
+#p.add_mesh(mesh_clean, color='lightblue')
 # p.add_floor()
 p.show()
 
 
-polydata = mesh_clean.extract_geometry()
-stl_file = 'wmapconbase.stl'
+polydata = mesh.extract_geometry()
+stl_file = 'wmapredimensionado.stl'
 polydata.save(stl_file)
 print("se guardo la imagen como: ", stl_file)
