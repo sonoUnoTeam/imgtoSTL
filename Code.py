@@ -6,8 +6,12 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread('wmapp.png')
-imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
+img_original = cv2.imread('plank.png')
+# imgresize = cv2.resize(imagen_original, (512,256))
+# cv2.imshow('imagen dimesionada',imgresize)
+# cv2.imshow('imagenoriginal',imagen_original)
+# cv2.waitKey(0)
+imagen_rgb = cv2.cvtColor(img_original, cv2.COLOR_BGR2RGB)
 # Extract image matrix
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape
@@ -40,426 +44,6 @@ zbr = np.zeros((h, w))
 zo = np.zeros((h, w))
 zv = np.zeros((h, w))
 # # #-----------------Clasificacion para WMAPP------------------------------
-for i in range(h):
-    for j in range(w):
-        pixel = imagen_rgb[i, j]
-        r, g, b = pixel
-        # Calcula el porcentaje de color rojo
-        pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
-        pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
-        pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
-        # Blanco
-        if pR >= 65 and pG == 100 and pB >= 65:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            pw[i, j] = pixel
-        # Rojo Claro
-        if 100 >= pR >= 20 and 30 >= pG >= 0 and 50 >= pB >= 0:
-            pr[i, j] = pixel
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 48
-            # Rojo
-        elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
-            pr[i, j] = pixel
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 49
-            # Rojo Oscuro
-        elif 70 >= pR >= 20 and 25 >= pG >= 0 and 10 >= pB >= 0:
-            pr[i, j] = pixel
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 50
-            # Verde Claro
-        elif 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 38
-            pg[i, j] = pixel
-            # Verde
-        elif 70 >= pR >= 0 and 100 >= pG >= 60 and 100 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 37
-            pg[i, j] = pixel
-            # Verde Oscuro
-        elif 75 >= pR >= 0 and 75 >= pG >= 30 and 45 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 36
-            pg[i, j] = pixel
-            # Azul Claro
-        elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 32
-            pb[i, j] = pixel
-            # azul
-        elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 31
-            pb[i, j] = pixel
-            # Azul Oscuro
-        elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 30
-            pb[i, j] = pixel
-             # Cian Claro
-        elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 35
-            pc[i, j] = pixel
-            # Cian
-        elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 5
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 34
-            pc[i, j] = pixel
-            # Cian Oscuro
-        elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 33
-            pc[i, j] = pixel
-            # Amarillo claro
-        elif 100 >= pR >= 80 and 100 >= pG >= 60 and 70 >= pB >= 20:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 39
-            py[i, j] = pixel
-        # Amarillo
-        elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 40
-            py[i, j] = pixel
-            # Amarillo Oscuro
-        elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 41
-            py[i, j] = pixel
-        # Marron Claro
-        elif 100 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 45
-            pbr[i, j] = pixel
-        # Marron
-        elif 80 >= pR >= 50 and 60 >= pG >= 35 and 10 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 46
-            pbr[i, j] = pixel
-        # Marron Oscuro
-        elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 47
-            pbr[i, j] = pixel
-            # Naranja Claro
-        elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 42
-            po[i, j] = pixel
-        # Naranja Medio
-        elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 43
-            po[i, j] = pixel
-        # Naranja Oscuro
-        elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
-            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 6
-            else:
-                x[i, j] = j
-                y[i, j] = i
-                z[i, j] = 44
-            po[i, j] = pixel
-            # Negro
-        elif pR == 0 and pG == 0 and pB == 0:
-            x[i, j] = j
-            y[i, j] = i
-            z[i, j] = 40
-            pbl[i, j] = pixel
-        else:
-            pe[i, j] = pixel
-# #-----------------------Clasificacion para COBE CELESTE (canales cyan,azul,amarillo,violeta y negro)
-# for i in range(h):
-#     for j in range(w):
-#         pixel = imagen_rgb[i, j]
-#         r, g, b = pixel
-#         # Calcula el porcentaje de color rojo
-#         pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
-#         pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
-#         pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
-#         #Amarillo Claro
-#         if 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 50
-#             py[i, j] = pixel
-#         # Amarillo
-#         elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 5
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 49
-#             py[i, j] = pixel
-#             # Amarillo Oscuro
-#         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 48
-#             py[i, j] = pixel
-#             # Verde Claro
-#         elif 5 >= pR >= 0 and 85 >= pG >= 70 and 85 >= pB >= 50:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zg[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zg[i, j] = 47
-#             pg[i, j] = pixel
-#             # Verde
-#         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zg[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zg[i, j] = 46
-#             pg[i, j] = pixel
-#             # Verde Oscuro
-#         elif 75 >= pR >= 0 and 75 >= pG >= 30 and 45 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zg[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zg[i, j] = 45
-#             pg[i, j] = pixel
-#             # Violeta 
-#         elif 25 >= pR >= 10 and 12 >= pG >= 5 and 50 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zp[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zv[i, j] = 39
-#             pvi[i, j] = pixel
-#             # Azul Claro
-#         elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zb[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zb[i, j] = 42
-#             pb[i, j] = pixel
-#             # azul
-#         elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zb[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zb[i, j] = 41
-#             pb[i, j] = pixel
-#             # Azul Oscuro
-#         elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zb[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zb[i, j] = 40
-#             pb[i, j] = pixel
-            
-#             # Cian Claro
-#         elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 45
-#             pc[i, j] = pixel
-#             # Cian
-#         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 44
-#             pc[i, j] = pixel
-#             # Cian Oscuro
-#         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 43
-#             pc[i, j] = pixel
-#         # Negro
-#         elif pR == 0 and pG == 0 and pB == 0:
-#             x[i, j] = j
-#             y[i, j] = i
-#             zbl[i, j] = 6
-#             pbl[i, j] = pixel
-#         else:
-#             pe[i, j] = pixel
-####-----WMAP 1 
 # for i in range(h):
 #     for j in range(w):
 #         pixel = imagen_rgb[i, j]
@@ -469,295 +53,557 @@ for i in range(h):
 #         pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
 #         pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
 #         # Blanco
-#         if 100 >= pR >= 80 and 100 >= pG >= 80 and 100 >= pB >= 80:
+#         if pR >= 65 and pG == 100 and pB >= 65:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zw[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zw[i, j] = 6
+#                 z[i, j] = 8
 #             pw[i, j] = pixel
 #         # Rojo Claro
-#         if 100 >= pR >= 50 and 30 >= pG >= 0 and 50 >= pB >= 0:
+#         if 100 >= pR >= 20 and 30 >= pG >= 0 and 50 >= pB >= 0:
 #             pr[i, j] = pixel
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 58
+#                 z[i, j] = 48
 #             # Rojo
-#         elif 100 >= pR >= 30 and 15 >= pG >= 0 and 30 >= pB >= 0:
+#         elif 100 >= pR >= 20 and 25 >= pG >= 0 and 30 >= pB >= 0:
 #             pr[i, j] = pixel
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 59
+#                 z[i, j] = 49
 #             # Rojo Oscuro
-#         elif 70 >= pR >= 30 and 20 >= pG >= 0 and 10 >= pB >= 0:
+#         elif 70 >= pR >= 20 and 25 >= pG >= 0 and 10 >= pB >= 0:
 #             pr[i, j] = pixel
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zr[i, j] = 60
-#                 # Naranja Claro
-#         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 47 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zo[i, j] = 10
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zo[i, j] = 53
-#             po[i, j] = pixel
-#         # Naranja Medio
-#         elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zo[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zo[i, j] = 54
-#             po[i, j] = pixel
-#         # Naranja Oscuro
-#         elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zo[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zo[i, j] = 55
-#             po[i, j] = pixel
-#             # Marron Claro
-#         elif 80 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zbr[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zbr[i, j] = 56
-#             pbr[i, j] = pixel
-#         # Marron
-#         elif 80 >= pR >= 55 and 60 >= pG >= 35 and 35 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zbr[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zbr[i, j] = 57
-#             pbr[i, j] = pixel
-#         # Marron Oscuro
-#         elif 65 >= pR >= 30 and 45 >= pG >= 15 and 10 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zbr[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zbr[i, j] = 58
-#             pbr[i, j] = pixel
-            
-#         # Amarillo claro
-#         elif 100 >= pR >= 80 and 100 >= pG >= 60 and 95 >= pB >= 20:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 50
-#             py[i, j] = pixel
-#         # Amarillo
-#         elif 100 >= pR >= 50 and 85 >= pG >= 30 and 35 >= pB >= 0:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 51
-#             py[i, j] = pixel
-#             # Amarillo Oscuro
-#         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zy[i, j] = 52
-#             py[i, j] = pixel
+#                 z[i, j] = 50
 #             # Verde Claro
-#         elif 90 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
+#         elif 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 49
+#                 z[i, j] = 38
 #             pg[i, j] = pixel
 #             # Verde
-#         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
+#         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 100 >= pB >= 0:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 48
+#                 z[i, j] = 37
 #             pg[i, j] = pixel
 #             # Verde Oscuro
-#         elif 75 >= pR >= 0 and 75 >= pG >= 15 and 55 >= pB >= 0:
+#         elif 75 >= pR >= 0 and 75 >= pG >= 30 and 52 >= pB >= 0:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zg[i, j] = 47
+#                 z[i, j] = 36
 #             pg[i, j] = pixel
-#                # Cian Claro
-#         elif 85 >= pR >= 30 and 100 >= pG >= 50 and 100 >= pB >= 50:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 46
-#             pc[i, j] = pixel
-#             # Cian
-#         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 45
-#             pc[i, j] = pixel
-#             # Cian Oscuro
-#         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
-#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 6
-#             else:
-#                 x[i, j] = j
-#                 y[i, j] = i
-#                 zc[i, j] = 44
-#             pc[i, j] = pixel
-            
 #             # Azul Claro
 #         elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 43
+#                 z[i, j] = 32
 #             pb[i, j] = pixel
 #             # azul
 #         elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 42
+#                 z[i, j] = 31
 #             pb[i, j] = pixel
 #             # Azul Oscuro
 #         elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 6
+#                 z[i, j] = 8
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 zb[i, j] = 41
+#                 z[i, j] = 30
 #             pb[i, j] = pixel
+#              # Cian Claro
+#         elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 35
+#             pc[i, j] = pixel
+#             # Cian
+#         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 5
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 34
+#             pc[i, j] = pixel
+#             # Cian Oscuro
+#         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 33
+#             pc[i, j] = pixel
+#             # Amarillo claro
+#         elif 100 >= pR >= 80 and 100 >= pG >= 60 and 70 >= pB >= 20:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 39
+#             py[i, j] = pixel
+#         # Amarillo
+#         elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 40
+#             py[i, j] = pixel
+#             # Amarillo Oscuro
+#         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 41
+#             py[i, j] = pixel
+#         # Marron Claro
+#         elif 100 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 45
+#             pbr[i, j] = pixel
+#         # Marron
+#         elif 80 >= pR >= 50 and 60 >= pG >= 35 and 10 >= pB >= 0:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 46
+#             pbr[i, j] = pixel
+#         # Marron Oscuro
+#         elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 47
+#             pbr[i, j] = pixel
+#             # Naranja Claro
+#         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 42
+#             po[i, j] = pixel
+#         # Naranja Medio
+#         elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 43
+#             po[i, j] = pixel
+#         # Naranja Oscuro
+#         elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
+#             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 8
+#             else:
+#                 x[i, j] = j
+#                 y[i, j] = i
+#                 z[i, j] = 44
+#             po[i, j] = pixel
 #             # Negro
 #         elif pR == 0 and pG == 0 and pB == 0:
 #             x[i, j] = j
 #             y[i, j] = i
-#             zbl[i, j] = 16
+#             z[i, j] = 40
 #             pbl[i, j] = pixel
 #         else:
+#             x[i, j] = j
+#             y[i, j] = i
+#             z[i, j] = 8
 #             pe[i, j] = pixel
-# plt.figure(figsize=(12, 6))
+####-----WMAP 1 
+for i in range(h):
+    for j in range(w):
+        pixel = imagen_rgb[i, j]
+        r, g, b = pixel
+        # Calcula el porcentaje de color rojo
+        pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
+        pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
+        pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
+        # Blanco
+        if 100 >= pR >= 80 and 100 >= pG >= 80 and 100 >= pB >= 80:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            pw[i, j] = pixel
+        # Rojo Claro
+        if 100 >= pR >= 50 and 30 >= pG >= 0 and 50 >= pB >= 0:
+            pr[i, j] = pixel
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 58
+            # Rojo
+        elif 100 >= pR >= 30 and 15 >= pG >= 0 and 30 >= pB >= 0:
+            pr[i, j] = pixel
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 59
+            # Rojo Oscuro
+        elif 70 >= pR >= 30 and 20 >= pG >= 0 and 10 >= pB >= 0:
+            pr[i, j] = pixel
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 60
+                # Naranja Claro
+        elif 100 >= pR >= 65 and 65 >= pG >= 30 and 47 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 10
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 53
+            po[i, j] = pixel
+        # Naranja Medio
+        elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 54
+            po[i, j] = pixel
+        # Naranja Oscuro
+        elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 55
+            po[i, j] = pixel
+            # Marron Claro
+        elif 80 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 56
+            pbr[i, j] = pixel
+        # Marron
+        elif 80 >= pR >= 55 and 60 >= pG >= 35 and 35 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 57
+            pbr[i, j] = pixel
+        # Marron Oscuro
+        elif 65 >= pR >= 30 and 45 >= pG >= 15 and 10 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 58
+            pbr[i, j] = pixel
+            
+        # Amarillo claro
+        elif 100 >= pR >= 80 and 100 >= pG >= 60 and 95 >= pB >= 20:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 50
+            py[i, j] = pixel
+        # Amarillo
+        elif 100 >= pR >= 50 and 85 >= pG >= 30 and 35 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 51
+            py[i, j] = pixel
+            # Amarillo Oscuro
+        elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 52
+            py[i, j] = pixel
+            # Verde Claro
+        elif 90 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 49
+            pg[i, j] = pixel
+            # Verde
+        elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 48
+            pg[i, j] = pixel
+            # Verde Oscuro
+        elif 75 >= pR >= 0 and 75 >= pG >= 15 and 55 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 47
+            pg[i, j] = pixel
+               # Cian Claro
+        elif 85 >= pR >= 30 and 100 >= pG >= 50 and 100 >= pB >= 50:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 46
+            pc[i, j] = pixel
+            # Cian
+        elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 45
+            pc[i, j] = pixel
+            # Cian Oscuro
+        elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 44
+            pc[i, j] = pixel
+            
+            # Azul Claro
+        elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 43
+            pb[i, j] = pixel
+            # azul
+        elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 42
+            pb[i, j] = pixel
+            # Azul Oscuro
+        elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 41
+            pb[i, j] = pixel
+            # Negro
+        elif pR == 0 and pG == 0 and pB == 0:
+            x[i, j] = j
+            y[i, j] = i
+            z[i, j] = 8
+            pbl[i, j] = pixel
+        else:
+            pe[i, j] = pixel
+plt.figure(figsize=(12, 6))
 
-# plt.subplot(3, 3, 1)
-# plt.title('Canal Marron')
-# plt.imshow(pbr, cmap='gray')
+plt.subplot(3, 3, 1)
+plt.title('Canal Marron')
+plt.imshow(pbr, cmap='gray')
 
-# plt.subplot(3, 3, 2)
-# plt.title('Canal Rojo')
-# plt.imshow(pr, cmap='gray')
+plt.subplot(3, 3, 2)
+plt.title('Canal Rojo')
+plt.imshow(pr, cmap='gray')
 
-# plt.subplot(3, 3, 3)
-# plt.title('Canal Naranja')
-# plt.imshow(po, cmap='gray')
+plt.subplot(3, 3, 3)
+plt.title('Canal Naranja')
+plt.imshow(po, cmap='gray')
 
-# plt.subplot(3, 3, 4)
-# plt.title('Canal Yellow')
-# plt.imshow(py, cmap='gray')
+plt.subplot(3, 3, 4)
+plt.title('Canal Yellow')
+plt.imshow(py, cmap='gray')
 
-# plt.subplot(3, 3, 5)
-# plt.title('Canal Verde')
-# plt.imshow(pg, cmap='gray')
+plt.subplot(3, 3, 5)
+plt.title('Canal Verde')
+plt.imshow(pg, cmap='gray')
 
-# plt.subplot(3, 3, 6)
-# plt.title('Canal Cyan')
-# plt.imshow(pc, cmap='gray')
+plt.subplot(3, 3, 6)
+plt.title('Canal Cyan')
+plt.imshow(pc, cmap='gray')
 
-# plt.subplot(3, 3, 7)
-# plt.title('Canal Azul')
-# plt.imshow(pb, cmap='gray')
+plt.subplot(3, 3, 7)
+plt.title('Canal Azul')
+plt.imshow(pb, cmap='gray')
 
-# plt.subplot(3, 3, 8)
-# plt.title('Canal Blanco')
-# plt.imshow(pw, cmap='gray')
+plt.subplot(3, 3, 8)
+plt.title('Canal Blanco')
+plt.imshow(pw, cmap='gray')
 
-# plt.subplot(3, 3, 9)
-# plt.title('EXTRA')
-# plt.imshow(pe, cmap='gray')
-# plt.show()
+plt.subplot(3, 3, 9)
+plt.title('EXTRA')
+plt.imshow(pe, cmap='gray')
+plt.show()
 
 x_base, y_base = np.meshgrid(range(w), range(h))
 z_base = np.zeros_like(x_base)
@@ -767,8 +613,9 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-mesh.points = mesh.points * 0.25
-
+mesh.points [:,0] /= 10
+mesh.points [:,1] /= 10
+mesh.points[:,2] /= 10
 # Mostramos la estructura
 p = pv.Plotter()
 p.add_mesh(mesh, color="gray")
@@ -804,7 +651,7 @@ p.show()
 # mesh_clean.points /= 10
 
 # ----------- Visualice the mesh
-p = pv.Plotter()
+#p = pv.Plotter()
 # p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
 #         line_width=None, opacity=2.0)
 # p.add_mesh(meshw, color="white")
@@ -819,10 +666,10 @@ p = pv.Plotter()
 # p.add_mesh(meshv, color="purple")
 #p.add_mesh(mesh_clean, color='lightblue')
 # p.add_floor()
-p.show()
+#p.show()
 
 
-polydata = mesh.extract_geometry()
-stl_file = 'wmapredimensionado.stl'
-polydata.save(stl_file)
-print("se guardo la imagen como: ", stl_file)
+# polydata = mesh.extract_geometry()
+# stl_file = 'wmap1280x720.stl'
+# polydata.save(stl_file)
+# print("se guardo la imagen como: ", stl_file)
