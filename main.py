@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = 'crecienteplot-braille-puntos.png'
+img_path = '5-x-y-4cuad-legend.png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
@@ -108,6 +108,6 @@ p.show()
 # # os.rename(ruta_archivo_stl, ruta_destino_stl)
 # # print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
 polydata = mesh.extract_geometry()
-stl_file = 'crecienteplot-brailleptos.stl'
+stl_file = '5-x-y-4cuad-legend.stl'
 polydata.save(stl_file)
 print("se guardo la imagen como: ", stl_file)
