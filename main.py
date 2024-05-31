@@ -5,7 +5,7 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = r'C:\Users\franc\OneDrive\Documentos\GitHub\imgtoSTL\imgs\Decr-Cte-Cre-28plot-braille.png'
+img_path = r'C:\Users\franc\OneDrive\Documentos\GitHub\imgtoSTL\imgs\Decr-Cte-Decrplot-braille1.png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
@@ -108,6 +108,6 @@ p.show()
 # # os.rename(ruta_archivo_stl, ruta_destino_stl)
 # # print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
 polydata = mesh.extract_geometry()
-stl_file = 'Decr-Cte-Cre-28plot-braille.stl'
+stl_file = 'Decr-Cte-Decrplot-braille1.stl'
 polydata.save(stl_file)
 print("se guardo la imagen como: ", stl_file)
