@@ -86,27 +86,8 @@ p = pv.Plotter()
 p.add_mesh(mesh, color="gray")
 p.show()
 
-# ------Para guarda la estructura a stl y guardarlo en carpeta imagenes_3d
+# ------Para guarda la estructura a stl 
 
-# polydata = mesh.extract_geometry()
-# nombre_archivo = input('coloque nombre de archivo para guardar stl: ')
-# stl_file = nombre_archivo+'.stl'
-# polydata.save(stl_file)
-# ruta_archivo_stl = stl_file
-
-# #Ruta de la carpeta donde deseas guardar el archivo STL
-# carpeta_destino = 'imagenes_3d'
-
-# #Asegurarse de que la carpeta de destino exista, si no, crearla
-# if not os.path.exists(carpeta_destino):
-#     os.makedirs(carpeta_destino)
-
-# #Ruta completa de destino del archivo STL
-# ruta_destino_stl = os.path.join(carpeta_destino, os.path.basename(ruta_archivo_stl))
-
-# # #Mover el archivo STL a la carpeta de destino
-# # os.rename(ruta_archivo_stl, ruta_destino_stl)
-# # print("se guardo la imagen como: ", stl_file, 'en la carpeta', carpeta_destino)
 polydata = mesh.extract_geometry()
 stl_file = 'ASASSN-V J003016.stl'
 polydata.save(stl_file)

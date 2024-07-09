@@ -5,63 +5,59 @@ from pyvista import StructuredGrid
 import matplotlib.pyplot as plt
 
 
-# Add the image to process
-img_original = cv2.imread('plank.png')
+### Add the image to process
+img_original = cv2.imread(r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\COBE_1.png')
+
+### If you wwnat to resize the image  
 # imgresize = cv2.resize(imagen_original, (512,256))
 # cv2.imshow('imagen dimesionada',imgresize)
 # cv2.imshow('imagenoriginal',imagen_original)
 # cv2.waitKey(0)
+
+### Converto BGR to RGB 
 imagen_rgb = cv2.cvtColor(img_original, cv2.COLOR_BGR2RGB)
-# Extract image matrix
+
+### Extract image matrix
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape
 
-
-pr = np.zeros((h, w, c), dtype=np.uint8)
-pp = np.zeros((h, w, c), dtype=np.uint8)
-py = np.zeros((h, w, c), dtype=np.uint8)
-pg = np.zeros((h, w, c), dtype=np.uint8)
-pc = np.zeros((h, w, c), dtype=np.uint8)
-pb = np.zeros((h, w, c), dtype=np.uint8)
-pbl = np.zeros((h, w, c), dtype=np.uint8)
-pw = np.zeros((h, w, c), dtype=np.uint8)
-pe = np.zeros((h, w, c), dtype=np.uint8)
-pbr = np.zeros((h, w, c), dtype=np.uint8)
-po = np.zeros((h, w, c), dtype=np.uint8)
-pvi = np.zeros((h, w, c), dtype=np.uint8)
+### Create empty matrix for each color
+pr = np.zeros((h, w, c), dtype=np.uint8) #Red
+pp = np.zeros((h, w, c), dtype=np.uint8) #Pink   
+py = np.zeros((h, w, c), dtype=np.uint8) #Yellow
+pg = np.zeros((h, w, c), dtype=np.uint8) #Green
+pc = np.zeros((h, w, c), dtype=np.uint8) #Cyan
+pb = np.zeros((h, w, c), dtype=np.uint8) #Blue
+pbl = np.zeros((h, w, c), dtype=np.uint8) #Black
+pw = np.zeros((h, w, c), dtype=np.uint8)  #White
+pe = np.zeros((h, w, c), dtype=np.uint8)  #Extra
+pbr = np.zeros((h, w, c), dtype=np.uint8) #Brown
+po = np.zeros((h, w, c), dtype=np.uint8)  #Orange
+pvi = np.zeros((h, w, c), dtype=np.uint8) #Violet
+### Create matrix to store positions 
 x = np.zeros((h, w))
 y = np.zeros((h, w))
 z = np.zeros((h,w))
-zr = np.zeros((h, w))
-zb = np.zeros((h, w))
-zg = np.zeros((h, w))
-zp = np.zeros((h, w))
-zc = np.zeros((h, w))
-zbl = np.zeros((h, w))
-zy = np.zeros((h, w))
-zw = np.zeros((h, w))
-zbr = np.zeros((h, w))
-zo = np.zeros((h, w))
-zv = np.zeros((h, w))
-# # #-----------------Clasificacion para WMAPP------------------------------
+
+# # #-----------------Clasification for WMAPP------------------------------
 # for i in range(h):
 #     for j in range(w):
 #         pixel = imagen_rgb[i, j]
 #         r, g, b = pixel
-#         # Calcula el porcentaje de color rojo
-#         pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
-#         pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
-#         pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
+#         #### Calculate the % of each color in pixel
+#         pR = r / 255.0 * 100  # % of red 
+#         pG = g / 255.0 * 100   # % of green
+#         pB = b / 255.0 * 100  # % of blue
 #         # Blanco
 #         if pR >= 65 and pG == 100 and pB >= 65:
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             pw[i, j] = pixel
 #         # Rojo Claro
 #         if 100 >= pR >= 20 and 30 >= pG >= 0 and 50 >= pB >= 0:
@@ -69,7 +65,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -80,7 +76,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -91,7 +87,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -101,7 +97,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -112,7 +108,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -123,7 +119,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -134,7 +130,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -145,7 +141,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -156,7 +152,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -167,7 +163,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -189,7 +185,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -200,7 +196,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -211,7 +207,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -222,7 +218,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -233,7 +229,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -244,7 +240,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -255,7 +251,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -266,7 +262,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -277,7 +273,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -288,7 +284,7 @@ zv = np.zeros((h, w))
 #             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 8
+#                 z[i, j] = 6
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
@@ -303,189 +299,189 @@ zv = np.zeros((h, w))
 #         else:
 #             x[i, j] = j
 #             y[i, j] = i
-#             z[i, j] = 8
+#             z[i, j] = 6
 #             pe[i, j] = pixel
-####-----WMAP 1 
+####---------------------WMAP 1 
 for i in range(h):
     for j in range(w):
         pixel = imagen_rgb[i, j]
         r, g, b = pixel
-        # Calcula el porcentaje de color rojo
-        pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
-        pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
-        pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
-        # Blanco
+        #### Calculate the % of each color in pixel
+        pR = r / 255.0 * 100  # % of red 
+        pG = g / 255.0 * 100   # % of green
+        pB = b / 255.0 * 100  # % of blue
+        # WHITE
         if 100 >= pR >= 80 and 100 >= pG >= 80 and 100 >= pB >= 80:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 8
             pw[i, j] = pixel
-        # Rojo Claro
+        # LIGHT RED
         if 100 >= pR >= 50 and 30 >= pG >= 0 and 50 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 58
-            # Rojo
+            # RED
         elif 100 >= pR >= 30 and 15 >= pG >= 0 and 30 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 59
-            # Rojo Oscuro
+            # DARK RED
         elif 70 >= pR >= 30 and 20 >= pG >= 0 and 10 >= pB >= 0:
             pr[i, j] = pixel
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 60
-                # Naranja Claro
+           #LIGHT ORANGE
         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 47 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 10
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 53
             po[i, j] = pixel
-        # Naranja Medio
+        # ORANGE
         elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 54
             po[i, j] = pixel
-        # Naranja Oscuro
+        # DARK ORANGE
         elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 55
             po[i, j] = pixel
-            # Marron Claro
+         #LIGHT BROWN
         elif 80 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 56
             pbr[i, j] = pixel
-        # Marron
+        # BROWN
         elif 80 >= pR >= 55 and 60 >= pG >= 35 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 57
             pbr[i, j] = pixel
-        # Marron Oscuro
+        # DARK BROWN
         elif 65 >= pR >= 30 and 45 >= pG >= 15 and 10 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 58
             pbr[i, j] = pixel
             
-        # Amarillo claro
+        # LIGHT YELLOW
         elif 100 >= pR >= 80 and 100 >= pG >= 60 and 95 >= pB >= 20:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 50
             py[i, j] = pixel
-        # Amarillo
+        # YELLOW
         elif 100 >= pR >= 50 and 85 >= pG >= 30 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 51
             py[i, j] = pixel
-            # Amarillo Oscuro
+            # DARK YELLOW
         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 52
             py[i, j] = pixel
-            # Verde Claro
+            # LIGHT GREEN
         elif 90 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 15:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 49
             pg[i, j] = pixel
-            # Verde
+            # GREEN
         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
                 z[i, j] = 48
             pg[i, j] = pixel
-            # Verde Oscuro
+            # DARK GREEN
         elif 75 >= pR >= 0 and 75 >= pG >= 15 and 55 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -496,7 +492,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -507,7 +503,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -518,7 +514,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -530,7 +526,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -541,7 +537,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -552,7 +548,7 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 6
             else:
                 x[i, j] = j
                 y[i, j] = i
@@ -562,42 +558,44 @@ for i in range(h):
         elif pR == 0 and pG == 0 and pB == 0:
             x[i, j] = j
             y[i, j] = i
-            z[i, j] = 8
+            z[i, j] = 6
             pbl[i, j] = pixel
         else:
             pe[i, j] = pixel
+
+### Plot the clasification 
 plt.figure(figsize=(12, 6))
 
 plt.subplot(3, 3, 1)
-plt.title('Canal Marron')
+plt.title('BROWN CHANNEL')
 plt.imshow(pbr, cmap='gray')
 
 plt.subplot(3, 3, 2)
-plt.title('Canal Rojo')
+plt.title('RED CHANNEL')
 plt.imshow(pr, cmap='gray')
 
 plt.subplot(3, 3, 3)
-plt.title('Canal Naranja')
+plt.title('ORANGE CHANNEL')
 plt.imshow(po, cmap='gray')
 
 plt.subplot(3, 3, 4)
-plt.title('Canal Yellow')
+plt.title('YELLOW CHANNEL')
 plt.imshow(py, cmap='gray')
 
 plt.subplot(3, 3, 5)
-plt.title('Canal Verde')
+plt.title('GREEN CHANNEL')
 plt.imshow(pg, cmap='gray')
 
 plt.subplot(3, 3, 6)
-plt.title('Canal Cyan')
+plt.title('CYAN CHANNEL')
 plt.imshow(pc, cmap='gray')
 
 plt.subplot(3, 3, 7)
-plt.title('Canal Azul')
+plt.title('BLUE CHANNEL')
 plt.imshow(pb, cmap='gray')
 
 plt.subplot(3, 3, 8)
-plt.title('Canal Blanco')
+plt.title('WHITE CHANNEL')
 plt.imshow(pw, cmap='gray')
 
 plt.subplot(3, 3, 9)
@@ -605,71 +603,30 @@ plt.title('EXTRA')
 plt.imshow(pe, cmap='gray')
 plt.show()
 
+### Create a base for the model 
 x_base, y_base = np.meshgrid(range(w), range(h))
 z_base = np.zeros_like(x_base)
+
+### Merge base values and pixels
 x = np.stack((x_base, x), axis=0)
 y = np.stack((y_base, y), axis=0)
 z = np.stack((z_base, z), axis=0)
 
-# Creamos la estructura
+### Create the structure
 mesh = pv.StructuredGrid(-x, y, z)
+
+### Dimension the mesh
 mesh.points [:,0] /= 10
 mesh.points [:,1] /= 10
 mesh.points[:,2] /= 10
-# Mostramos la estructura
+
+### Show the strcucture
 p = pv.Plotter()
 p.add_mesh(mesh, color="gray")
 p.show()
-# xi = np.stack((x_base, x), axis=0)
-# yi = np.stack((y_base, y), axis=0)
-# zbll = np.stack((z_base, zbl), axis=0)  # negro
-# zrr = np.stack((z_base, zr), axis=0)   # rojo
-# zcc = np.stack((z_base, zc), axis=0)   # celeste
-# zpp = np.stack((z_base, zp), axis=0)   # magenta
-# zbb = np.stack((z_base, zb), axis=0)  # azul
-# zgb = np.stack((z_base, zg), axis=0)  # verge
-# zyy = np.stack((z_base, zy), axis=0)   # amarillo
-# zww = np.stack((z_base, zw), axis=0)  # blanco
-# zoo = np.stack((z_base, zo), axis=0)  # naranja
-# zbrr = np.stack((z_base, zbr), axis=0)   # marron
-# zvr = np.stack((z_base, zv), axis=0)
-# meshw = StructuredGrid(-xi, yi, zww, force_float=False)  # mesh white
-# meshr = StructuredGrid(-xi, yi, zrr, force_float=False)  # mesh red
-# mesho = StructuredGrid(-xi, yi, zoo, force_float=False)  # mesh orange
-# meshbr = StructuredGrid(-xi, yi, zbrr, force_float=False)  # mesh brown
-# meshy = StructuredGrid(-xi, yi, zyy, force_float=False)  # mesh yellow
-# meshp = StructuredGrid(-xi, yi, zpp, force_float=False)  # mesh magenta
-# meshg = StructuredGrid(-xi, yi, zgb, force_float=False)  # mesh green
-# meshc = StructuredGrid(-xi, yi, zcc, force_float=False)  # mesh cyan
-# meshb = StructuredGrid(-xi, yi, zbb, force_float=False)  # mesh blue
-# meshbl = StructuredGrid(-xi, yi, zbll, force_float=False)  # mesh black
-# meshv = StructuredGrid(-xi, yi, zvr, force_float=False)
-# base = StructuredGrid(-x_base, y_base, zbl, force_float=False)
-# mesht  =  pv.merge ([ meshr , meshb , meshy , meshc , meshg , mesho , meshbr , meshbl , meshv , meshw , base ])
-# #mesht = pv.merge([meshr, mesho, meshbr, meshy, meshg, meshc, meshb, meshv,meshbl,meshw, base]) # Add mesh
-# mesh_clean = mesht.clean()
-# mesh_clean.points /= 10
 
-# ----------- Visualice the mesh
-#p = pv.Plotter()
-# p.add_floor(face='-z', i_resolution=400, j_resolution=400, color='black',
-#         line_width=None, opacity=2.0)
-# p.add_mesh(meshw, color="white")
-# p.add_mesh(meshr, color="red")
-# p.add_mesh(meshy, color="yellow")
-# p.add_mesh(meshg, color="green")
-# p.add_mesh(meshc, color="cyan")
-# p.add_mesh(meshb, color="blue")
-# p.add_mesh(meshbl, color="black")
-# p.add_mesh(meshbr, color="brown")
-# p.add_mesh(mesho, color="orange")
-# p.add_mesh(meshv, color="purple")
-#p.add_mesh(mesh_clean, color='lightblue')
-# p.add_floor()
-#p.show()
-
-
-# polydata = mesh.extract_geometry()
-# stl_file = 'wmap1280x720.stl'
-# polydata.save(stl_file)
-# print("se guardo la imagen como: ", stl_file)
+### Export the model to stl 
+polydata = mesh.extract_geometry()
+stl_file = 'wmapp.stl'
+polydata.save(stl_file)
+print("se guardo la imagen como: ", stl_file)

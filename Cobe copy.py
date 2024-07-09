@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread('cobe.png')
+imagen_original = cv2.imread(r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\cobe.png')
 imgresize = cv2.resize(imagen_original, (1280,720))
 cv2.imshow('imagen',imgresize)
 cv2.waitKey(0)
@@ -52,6 +52,7 @@ for i in range(h):
         pR = r / 255.0 * 100  # PORCENTAJE DE ROJO
         pB = b / 255.0 * 100   # PORCENTAJE DE AZUL
         pG = g / 255.0 * 100  # PORCENTAJE DE VERDE
+        
         #Amarillo Claro
         if 80 >= pR >= 40 and 100 >= pG >= 70 and 85 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
@@ -258,11 +259,11 @@ mesh.points /= 10
 # mesh_clean.points[:,2] *= 0.10
 # ----------- Visualice the mesh
 p = pv.Plotter()
-p.add_mesh(mesh, color='lightblue')
+p.add_mesh(mesh, color='gray')
 p.show()
 
 
-polydata = mesh.extract_geometry()
-stl_file = 'cobe1280x720.stl'
-polydata.save(stl_file)
-print("se guardo la imagen como: ", stl_file)
+# polydata = mesh.extract_geometry()
+# stl_file = 'cobe1280x720.stl'
+# polydata.save(stl_file)
+# print("se guardo la imagen como: ", stl_file)
