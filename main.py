@@ -5,11 +5,11 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\ASASSN-V J003016.19-462759.5.csv_plot-braille.png'
+img_path = r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\decrease (1).png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
-
+image.show()
 # Armo matriz de la imagen
 matriz = np.asarray(image)
 
@@ -24,7 +24,7 @@ for i in range(h):
             matriz_mod[i][j] = 255  # Cambio a blanco(255)
 
 plt.imshow(matriz_mod, cmap='gray', vmin=0, vmax=255)
-plt.title("Blanco(0) y Negro(1)")
+plt.title("Inversion de escalas")
 plt.show()
 
 # -------------------- Agrandar lineas -----------------------------
@@ -83,12 +83,12 @@ mesh.points = mesh.points * 0.28
 
 # Mostramos la estructura
 p = pv.Plotter()
-p.add_mesh(mesh, color="gray")
+p.add_mesh(mesh, color="lightgreen")
 p.show()
 
 # ------Para guarda la estructura a stl 
 
-polydata = mesh.extract_geometry()
-stl_file = 'ASASSN-V J003016.stl'
-polydata.save(stl_file)
-print("se guardo la imagen como: ", stl_file)
+# polydata = mesh.extract_geometry()
+# stl_file = 'ASASSN-V J003016.stl'
+# polydata.save(stl_file)
+# print("se guardo la imagen como: ", stl_file)
