@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread(r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\cobe.png')
-imgresize = cv2.resize(imagen_original, (1280,720))
-cv2.imshow('imagen',imgresize)
-cv2.waitKey(0)
-imagen_rgb = cv2.cvtColor(imgresize, cv2.COLOR_BGR2RGB)
+imagen_original = cv2.imread(r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\cobe.png')
+#imgresize = cv2.resize(imagen_original, (1280,720))
+# cv2.imshow('imagen',imagen_original)
+# cv2.waitKey(0)
+imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 # Extract image matrix
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape

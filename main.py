@@ -49,27 +49,27 @@ img_mask = matriz_mod.copy()
 # ---------- Visualizar en 3d y cambiar altura a los blancos con pyVista
 # Crear una copia de la matriz
 matriz2d = img_mask.copy()
-alto_m, ancho_m = img_mask.shape
+height_m, width_m = img_mask.shape
 
 # Creo variables para luego agregar las alturas
-x = np.zeros((alto_m, ancho_m))
-y = np.zeros((alto_m, ancho_m))
-z = np.zeros((alto_m, ancho_m))
+x = np.zeros((height_m, width_m))
+y = np.zeros((height_m, width_m))
+z = np.zeros((height_m, width_m))
 
 # Creo un bucle for para agregarle las alturas dependiendo el valor de pixel
-for i in range(alto_m):
-    for j in range(ancho_m):
+for i in range(height_m):
+    for j in range(width_m):
         pixel = img_mask[i, j]
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
-        if pixel == 255:  # Si el pixel es blanco, establece la altura en 3
+        if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
             z[i, j] = 6  # Altura Z
-        else:  # Si el pixel es negro, establece la altura en 2
+        else:  # Si el pixel es negro, establece la altura en 3
             z[i, j] = 3  # Altura Z
 
 
 # Creo una base con altura 0 y con igual dimesiones que la original
-x_base, y_base = np.meshgrid(range(ancho_m), range(alto_m))
+x_base, y_base = np.meshgrid(range(width_m), range(height_m))
 z_base = np.zeros_like(x_base)
 
 # Unimos los puntos de las 2 superficies (importante poner el axis=0)
