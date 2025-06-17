@@ -209,35 +209,35 @@ for i in range(h):
 plt.figure(figsize=(12, 6))
 
 plt.subplot(3, 3, 1)
-plt.title('Canal Marron')
+plt.title('Channel Brown')
 plt.imshow(pbr, cmap='gray')
 
 plt.subplot(3, 3, 2)
-plt.title('Canal Rojo')
+plt.title('Channel Red')
 plt.imshow(pr, cmap='gray')
 
 plt.subplot(3, 3, 3)
-plt.title('Canal Naranja')
+plt.title('Channel Orange')
 plt.imshow(po, cmap='gray')
 
 plt.subplot(3, 3, 4)
-plt.title('Canal Yellow')
+plt.title('Channel Yellow')
 plt.imshow(py, cmap='gray')
 
 plt.subplot(3, 3, 5)
-plt.title('Canal Verde')
+plt.title('Channel Green')
 plt.imshow(pg, cmap='gray')
 
 plt.subplot(3, 3, 6)
-plt.title('Canal Cyan')
+plt.title('Channel Cyan')
 plt.imshow(pc, cmap='gray')
 
 plt.subplot(3, 3, 7)
-plt.title('Canal Azul')
+plt.title('Channel Blue')
 plt.imshow(pb, cmap='gray')
 
 plt.subplot(3, 3, 8)
-plt.title('Canal Blanco')
+plt.title('Channel White')
 plt.imshow(pw, cmap='gray')
 
 plt.subplot(3, 3, 9)
