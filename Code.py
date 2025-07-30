@@ -101,7 +101,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 38
+#                 z[i, j] = 48
 #             pg[i, j] = pixel
 #             # GREEN
 #         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 100 >= pB >= 0:
@@ -112,7 +112,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 37
+#                 z[i, j] = 50
 #             pg[i, j] = pixel
 #             # DARK GREEN 
 #         elif 75 >= pR >= 0 and 75 >= pG >= 30 and 52 >= pB >= 0:
@@ -123,7 +123,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 36
+#                 z[i, j] = 52
 #             pg[i, j] = pixel
 #             # LIGHT BLUE 
 #         elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
@@ -134,7 +134,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 32
+#                 z[i, j] = 36
 #             pb[i, j] = pixel
 #             # BLUE
 #         elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
@@ -145,7 +145,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 31
+#                 z[i, j] = 38
 #             pb[i, j] = pixel
 #             # DARK BLUE 
 #         elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
@@ -156,7 +156,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 30
+#                 z[i, j] = 40
 #             pb[i, j] = pixel
 #              #  LIGHT CYAN
 #         elif 75 >= pR >= 0 and 100 >= pG >= 50 and 100 >= pB >= 50:
@@ -167,7 +167,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 35
+#                 z[i, j] = 42
 #             pc[i, j] = pixel
 #             # CYAN
 #         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
@@ -178,7 +178,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 34
+#                 z[i, j] = 44
 #             pc[i, j] = pixel
 #             # DARK CYAN 
 #         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
@@ -189,7 +189,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 33
+#                 z[i, j] = 46
 #             pc[i, j] = pixel
 #             # LIGHT YELLOW 
 #         elif 100 >= pR >= 80 and 100 >= pG >= 60 and 70 >= pB >= 20:
@@ -200,7 +200,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 39
+#                 z[i, j] = 56
 #             py[i, j] = pixel
 #         # YELLOW
 #         elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
@@ -211,7 +211,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 40
+#                 z[i, j] = 58
 #             py[i, j] = pixel
 #             #DARK YELLOW
 #         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
@@ -222,7 +222,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 41
+#                 z[i, j] = 60
 #             py[i, j] = pixel
 #         #  LIGHT BROWN 
 #         elif 100 >= pR >= 50 and 60 >= pG >= 40 and 40 >= pB >= 10:
@@ -233,7 +233,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 45
+#                 z[i, j] = 68
 #             pbr[i, j] = pixel
 #         # BROWN
 #         elif 80 >= pR >= 50 and 60 >= pG >= 35 and 10 >= pB >= 0:
@@ -244,7 +244,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 46
+#                 z[i, j] = 70
 #             pbr[i, j] = pixel
 #         # LIGHT BROWN
 #         elif 65 >= pR >= 30 and 55 >= pG >= 15 and 30 >= pB >= 0:
@@ -255,7 +255,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 47
+#                 z[i, j] = 72
 #             pbr[i, j] = pixel
 #             # LIGHT ORANGE 
 #         elif 100 >= pR >= 65 and 65 >= pG >= 30 and 35 >= pB >= 0:
@@ -266,7 +266,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 42
+#                 z[i, j] = 62
 #             po[i, j] = pixel
 #         # ORANGE 
 #         elif 85 >= pR >= 55 and 45 >= pG >= 20 and 20 >= pB >= 0:
@@ -277,7 +277,7 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 43
+#                 z[i, j] = 64
 #             po[i, j] = pixel
 #         # DARK ORANGE 
 #         elif 90 >= pR >= 55 and 45 >= pG >= 25 and 15 >= pB >= 0:
@@ -288,13 +288,13 @@ z = np.zeros((h,w))
 #             else:
 #                 x[i, j] = j
 #                 y[i, j] = i
-#                 z[i, j] = 44
+#                 z[i, j] = 66
 #             po[i, j] = pixel
 #             # BLACK
 #         elif pR == 0 and pG == 0 and pB == 0:
 #             x[i, j] = j
 #             y[i, j] = i
-#             z[i, j] = 40
+#             z[i, j] = 30
 #             pbl[i, j] = pixel
 #         else:
 #             x[i, j] = j
@@ -633,9 +633,12 @@ for i in range(h):
         elif pR == 0 and pG == 0 and pB == 0:
             x[i, j] = j
             y[i, j] = i
-            z[i, j] = 6
+            z[i, j] = 2
             pbl[i, j] = pixel
         else:
+            x[i, j] = j
+            y[i, j] = i
+            z[i, j] = 2
             pe[i, j] = pixel
 ### Plot the clasification 
 plt.figure(figsize=(12, 6))
@@ -703,11 +706,11 @@ mesh.points[:,2] /= 3
 
 ### Show the strcucture
 p = pv.Plotter()
-p.add_mesh(mesh, color="gray")
+p.add_mesh(mesh, color="lightgreen")
 p.show()
 
-### Export the model to stl 
-polydata = mesh.extract_geometry()
-stl_file = 'wmapp.stl'
-polydata.save(stl_file)
-print("se guardo la imagen como: ", stl_file)
+# ### Export the model to stl 
+# polydata = mesh.extract_geometry()
+# stl_file = 'wmap_1700pruebaconbase.stl'
+# polydata.save(stl_file)
+# print("se guardo la imagen como: ", stl_file)

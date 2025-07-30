@@ -5,11 +5,11 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\ASASSN-V J003016.19-462759.5.csv_plot-braille.png'
+img_path = r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\decrease (1).png'
 
 # Convertir a escala se grises
 image = Image.open(img_path).convert("L")
-
+image.show()
 # Armo matriz de la imagen
 matriz = np.asarray(image)
 
@@ -24,7 +24,7 @@ for i in range(h):
             matriz_mod[i][j] = 255  # Cambio a blanco(255)
 
 plt.imshow(matriz_mod, cmap='gray', vmin=0, vmax=255)
-plt.title("Blanco(0) y Negro(1)")
+plt.title("Inversion de escalas")
 plt.show()
 
 # -------------------- Agrandar lineas -----------------------------
@@ -49,27 +49,27 @@ img_mask = matriz_mod.copy()
 # ---------- Visualizar en 3d y cambiar altura a los blancos con pyVista
 # Crear una copia de la matriz
 matriz2d = img_mask.copy()
-alto_m, ancho_m = img_mask.shape
+height_m, width_m = img_mask.shape
 
 # Creo variables para luego agregar las alturas
-x = np.zeros((alto_m, ancho_m))
-y = np.zeros((alto_m, ancho_m))
-z = np.zeros((alto_m, ancho_m))
+x = np.zeros((height_m, width_m))
+y = np.zeros((height_m, width_m))
+z = np.zeros((height_m, width_m))
 
 # Creo un bucle for para agregarle las alturas dependiendo el valor de pixel
-for i in range(alto_m):
-    for j in range(ancho_m):
+for i in range(height_m):
+    for j in range(width_m):
         pixel = img_mask[i, j]
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
-        if pixel == 255:  # Si el pixel es blanco, establece la altura en 3
+        if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
             z[i, j] = 6  # Altura Z
-        else:  # Si el pixel es negro, establece la altura en 2
+        else:  # Si el pixel es negro, establece la altura en 3
             z[i, j] = 3  # Altura Z
 
 
 # Creo una base con altura 0 y con igual dimesiones que la original
-x_base, y_base = np.meshgrid(range(ancho_m), range(alto_m))
+x_base, y_base = np.meshgrid(range(width_m), range(height_m))
 z_base = np.zeros_like(x_base)
 
 # Unimos los puntos de las 2 superficies (importante poner el axis=0)
@@ -83,12 +83,12 @@ mesh.points = mesh.points * 0.28
 
 # Mostramos la estructura
 p = pv.Plotter()
-p.add_mesh(mesh, color="gray")
+p.add_mesh(mesh, color="lightgreen")
 p.show()
 
 # ------Para guarda la estructura a stl 
 
-polydata = mesh.extract_geometry()
-stl_file = 'ASASSN-V J003016.stl'
-polydata.save(stl_file)
-print("se guardo la imagen como: ", stl_file)
+# polydata = mesh.extract_geometry()
+# stl_file = 'ASASSN-V J003016.stl'
+# polydata.save(stl_file)
+# print("se guardo la imagen como: ", stl_file)

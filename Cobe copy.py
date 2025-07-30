@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread(r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\cobe.png')
-imgresize = cv2.resize(imagen_original, (1280,720))
-cv2.imshow('imagen',imgresize)
-cv2.waitKey(0)
-imagen_rgb = cv2.cvtColor(imgresize, cv2.COLOR_BGR2RGB)
+imagen_original = cv2.imread(r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\cobe.png')
+#imgresize = cv2.resize(imagen_original, (1280,720))
+# cv2.imshow('imagen',imagen_original)
+# cv2.waitKey(0)
+imagen_rgb = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2RGB)
 # Extract image matrix
 matriz = np.asarray(imagen_rgb)
 h, w, c = matriz.shape
@@ -209,35 +209,35 @@ for i in range(h):
 plt.figure(figsize=(12, 6))
 
 plt.subplot(3, 3, 1)
-plt.title('Canal Marron')
+plt.title('Channel Brown')
 plt.imshow(pbr, cmap='gray')
 
 plt.subplot(3, 3, 2)
-plt.title('Canal Rojo')
+plt.title('Channel Red')
 plt.imshow(pr, cmap='gray')
 
 plt.subplot(3, 3, 3)
-plt.title('Canal Naranja')
+plt.title('Channel Orange')
 plt.imshow(po, cmap='gray')
 
 plt.subplot(3, 3, 4)
-plt.title('Canal Yellow')
+plt.title('Channel Yellow')
 plt.imshow(py, cmap='gray')
 
 plt.subplot(3, 3, 5)
-plt.title('Canal Verde')
+plt.title('Channel Green')
 plt.imshow(pg, cmap='gray')
 
 plt.subplot(3, 3, 6)
-plt.title('Canal Cyan')
+plt.title('Channel Cyan')
 plt.imshow(pc, cmap='gray')
 
 plt.subplot(3, 3, 7)
-plt.title('Canal Azul')
+plt.title('Channel Blue')
 plt.imshow(pb, cmap='gray')
 
 plt.subplot(3, 3, 8)
-plt.title('Canal Blanco')
+plt.title('Channel White')
 plt.imshow(pw, cmap='gray')
 
 plt.subplot(3, 3, 9)
