@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 ### Add the image to process
-img_original = cv2.imread(r'C:\Users\franc\OneDrive\Escritorio\Coti\imgtoSTL\imgs\wmapp.png')
+img_original = cv2.imread(r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\wmapp.png')
 
 ### If you wwnat to resize the image  
 # imgresize = cv2.resize(imagen_original, (512,256))
@@ -565,6 +565,7 @@ z = np.zeros((h,w))
 #             pe[i, j] = pixel
 
 #------------------------------CODE TO LOW RESOLUTION IMAGES---------------------------------------------------
+'''
 for i in range(h):
     for j in range(w):
         pixel = imagen_rgb[i, j]
@@ -640,6 +641,84 @@ for i in range(h):
             y[i, j] = i
             z[i, j] = 2
             pe[i, j] = pixel
+'''
+#-------- YELLOW AND GREEN TOGETHER--------------
+for i in range(h):
+    for j in range(w):
+        pixel = imagen_rgb[i, j]
+        r, g, b = pixel
+        #### Calculate the % of each color in pixel
+        pR = r / 255.0 * 100  # % of red 
+        pG = g / 255.0 * 100   # % of green
+        pB = b / 255.0 * 100  # % of blue
+        # WHITE
+        if 100 >= pR >= 80 and 100 >= pG >= 90 and 100 >= pB >= 90:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 0
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 3
+            pw[i, j] = pixel
+        # RED AND ORANGE
+        if 100 >= pR >= 60 and 60 >= pG >= 10 and 30 >= pB >= 0:
+            pr[i, j] = pixel
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 3
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 10
+
+            # GREEN and Yellow
+        elif 100 >= pR >= 0 and 100 >= pG >= 50 and 30 >= pB >= 0:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 3
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 8
+            pg[i, j] = pixel
+               # CYAN
+        elif 85 >= pR >= 0 and 100 >= pG >= 20 and 100 >= pB >= 20:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 3
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 6
+            pc[i, j] = pixel
+            # BLUE
+        elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
+            if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 2
+            else:
+                x[i, j] = j
+                y[i, j] = i
+                z[i, j] = 4
+            pb[i, j] = pixel
+            # BLACK
+        elif pR == 0 and pG == 0 and pB == 0:
+            x[i, j] = j
+            y[i, j] = i
+            z[i, j] = 3
+            pbl[i, j] = pixel
+        else:
+            x[i, j] = j
+            y[i, j] = i
+            z[i, j] = 3
+            pe[i, j] = pixel     
+    
 ### Plot the clasification 
 plt.figure(figsize=(12, 6))
 
@@ -651,9 +730,9 @@ plt.subplot(3, 3, 2)
 plt.title('RED, YELLOW AND ORANGE CHANNEL')
 plt.imshow(pr, cmap='gray')
 
-# plt.subplot(3, 3, 3)
-# plt.title('ORANGE CHANNEL')
-# plt.imshow(po, cmap='gray')
+plt.subplot(3, 3, 3)
+plt.title('ORANGE CHANNEL')
+plt.imshow(po, cmap='gray')
 
 # plt.subplot(3, 3, 4)
 # plt.title('YELLOW CHANNEL')
@@ -711,6 +790,6 @@ p.show()
 
 # ### Export the model to stl 
 # polydata = mesh.extract_geometry()
-# stl_file = 'wmap_1700pruebaconbase.stl'
+# stl_file = 'wmap_amarillo_verde_juntos.stl'
 # polydata.save(stl_file)
 # print("se guardo la imagen como: ", stl_file)
