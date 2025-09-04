@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # Add the image to process
-imagen_original = cv2.imread(r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\cobe.png')
+imagen_original = cv2.imread(r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\cobec.png')
 #imgresize = cv2.resize(imagen_original, (1280,720))
 # cv2.imshow('imagen',imagen_original)
 # cv2.waitKey(0)
@@ -58,110 +58,110 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 50
+                z[i, j] = 15
             py[i, j] = pixel
         # Amarillo
         elif 100 >= pR >= 70 and 100 >= pG >= 60 and 35 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 49
+                z[i, j] = 14
             py[i, j] = pixel
             # Amarillo Oscuro
         elif 80 >= pR >= 60 and 80 >= pG >= 60 and 50 >= pB >= 10:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 48
+                z[i, j] = 13
             py[i, j] = pixel
             # Verde Claro
         elif 5 >= pR >= 0 and 85 >= pG >= 70 and 85 >= pB >= 50:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 47
+                z[i, j] = 12
             pg[i, j] = pixel
             # Verde
         elif 70 >= pR >= 0 and 100 >= pG >= 60 and 50 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 46
+                z[i, j] = 11
             pg[i, j] = pixel
             # Verde Oscuro
         elif 75 >= pR >= 0 and 75 >= pG >= 30 and 45 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 45
+                z[i, j] = 10
             pg[i, j] = pixel
             # Violeta 
         elif 25 >= pR >= 10 and 12 >= pG >= 5 and 50 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 39
+                z[i, j] = 9
             pvi[i, j] = pixel
             # Azul Claro
         elif 50 >= pR >= 0 and 50 >= pG >= 0 and 100 >= pB >= 5:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 42
+                z[i, j] = 5
             pb[i, j] = pixel
             # azul
         elif 45 >= pR >= 0 and 25 >= pG >= 0 and 100 >= pB >= 5:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 41
+                z[i, j] = 4
             pb[i, j] = pixel
             # Azul Oscuro
         elif 35 >= pR >= 0 and 25 >= pG >= 0 and 65 >= pB >= 0:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 40
+                z[i, j] = 3
             pb[i, j] = pixel
             
             # Cian Claro
@@ -169,39 +169,39 @@ for i in range(h):
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 45
+                z[i, j] = 8
             pc[i, j] = pixel
             # Cian
         elif 30 >= pR >= 0 and 100 >= pG >= 40 and 100 >= pB >= 40:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 44
+                z[i, j] = 7
             pc[i, j] = pixel
             # Cian Oscuro
         elif 40 >= pR >= 0 and 50 >= pG >= 20 and 50 >= pB >= 20:
             if pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 8
+                z[i, j] = 0
             else:
                 x[i, j] = j
                 y[i, j] = i
-                z[i, j] = 43
+                z[i, j] = 6
             pc[i, j] = pixel
         # Negro
         elif pR == 0 and pG == 0 and pB == 0:
             x[i, j] = j
             y[i, j] = i
-            z[i, j] = 8
+            z[i, j] = 0
             pbl[i, j] = pixel
         else:
             pe[i, j] = pixel
@@ -253,7 +253,7 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-mesh.points /= 10
+mesh.points /= 3
 # mesh_clean.points [:,0] *= 0.28
 # mesh_clean.points [:,1] *= 0.28
 # mesh_clean.points[:,2] *= 0.10
@@ -263,7 +263,7 @@ p.add_mesh(mesh, color='gray')
 p.show()
 
 
-# polydata = mesh.extract_geometry()
-# stl_file = 'cobe1280x720.stl'
-# polydata.save(stl_file)
-# print("se guardo la imagen como: ", stl_file)
+polydata = mesh.extract_geometry()
+stl_file = 'cobe_new.stl'
+polydata.save(stl_file)
+print("se guardo la imagen como: ", stl_file)
