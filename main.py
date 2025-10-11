@@ -5,12 +5,10 @@ import pyvista as pv
 import os
 
 # Insertar imagen
-img_path = r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\decrease (1).png'
-
+img_path = r'C:\Users\cotif\Documents\GitHub\imgtoSTL\rayosCosmicos-paint.png'
 
 # Convertir a escala se grises
-
-image= Image.open(img_path).convert("L")
+image = Image.open(img_path).convert("L")
 image.show()
 # Armo matriz de la imagen
 matriz = np.asarray(image)
@@ -24,7 +22,16 @@ for i in range(h):
         if matriz_mod[i][j] == 255:
             matriz_mod[i][j] = 0  # Lo que esta blanco lo cambio a negro
         else:
-            matriz_mod[i][j] = 255  # Cambio a blanco(255)
+            matriz_mod[i][j] = 255
+
+# for i in range(h):
+#     for j in range(w):
+#         if matriz_mod[i][j] == 109:
+#             matriz_mod[i][j] = 100  # Lo que esta blanco lo cambio a negro
+#         elif 4 <= matriz_mod[i][j] <= 192: 
+#             matriz_mod[i][j] = 255
+#         else:
+#             matriz_mod[i][j] = 0  # Cambio a blanco(255)
 
 plt.imshow(matriz_mod, cmap='gray', vmin=0, vmax=255)
 plt.title("Inversion de escalas")
@@ -66,10 +73,22 @@ for i in range(height_m):
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
         if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
-            z[i, j] = 6 # Altura Z
-        else:  # Si el pixel es blanco, establece la altura en 6
-            z[i, j] = 0 # Altura Z
+            z[i, j] = 6  # Altura Z
+        else:# Si el pixel es blanco, establece la altura en 6
+            z[i, j] = 3 # Altura Z
 
+#Para rayos 
+# for i in range(height_m):
+#     for j in range(width_m):
+#         pixel = img_mask[i, j]
+#         x[i, j] = j  # Coordenada X
+#         y[i, j] = i  # Coordenada Y
+#         if pixel == 100 : 
+#             z[i,j] = 4
+#         if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
+#             z[i, j] = 6  # Altura Z
+#         else:# Si el pixel es blanco, establece la altura en 6
+#             z[i, j] = 2 # Altura Z
 
 # Creo una base con altura 0 y con igual dimesiones que la original
 x_base, y_base = np.meshgrid(range(width_m), range(height_m))
@@ -82,7 +101,7 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-mesh.points = mesh.points * 0.06
+mesh.points = mesh.points * 0.2
 
 # Mostramos la estructura
 p = pv.Plotter()
