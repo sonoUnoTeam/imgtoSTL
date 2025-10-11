@@ -7,8 +7,10 @@ import os
 # Insertar imagen
 img_path = r'C:\Users\cotif\Documents\GitHub\imgtoSTL\imgs\decrease (1).png'
 
+
 # Convertir a escala se grises
-image = Image.open(img_path).convert("L")
+
+image= Image.open(img_path).convert("L")
 image.show()
 # Armo matriz de la imagen
 matriz = np.asarray(image)
@@ -16,6 +18,7 @@ matriz = np.asarray(image)
 # Crea una copia de la matriz para trabajar sobre los pixeles
 matriz_mod = matriz.copy()
 h, w = matriz.shape
+
 for i in range(h):
     for j in range(w):
         if matriz_mod[i][j] == 255:
@@ -63,9 +66,9 @@ for i in range(height_m):
         x[i, j] = j  # Coordenada X
         y[i, j] = i  # Coordenada Y
         if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
-            z[i, j] = 6  # Altura Z
-        else:  # Si el pixel es negro, establece la altura en 3
-            z[i, j] = 3  # Altura Z
+            z[i, j] = 6 # Altura Z
+        else:  # Si el pixel es blanco, establece la altura en 6
+            z[i, j] = 0 # Altura Z
 
 
 # Creo una base con altura 0 y con igual dimesiones que la original
@@ -79,16 +82,16 @@ z = np.stack((z_base, z), axis=0)
 
 # Creamos la estructura
 mesh = pv.StructuredGrid(-x, y, z)
-mesh.points = mesh.points * 0.28
+mesh.points = mesh.points * 0.06
 
 # Mostramos la estructura
 p = pv.Plotter()
-p.add_mesh(mesh, color="lightgreen")
+p.add_mesh(mesh, color="gray")
 p.show()
 
 # ------Para guarda la estructura a stl 
 
 # polydata = mesh.extract_geometry()
-# stl_file = 'ASASSN-V J003016.stl'
+# stl_file = 'lluvia_particulas.stl'
 # polydata.save(stl_file)
 # print("se guardo la imagen como: ", stl_file)
