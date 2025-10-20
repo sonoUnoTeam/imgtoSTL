@@ -23,19 +23,20 @@ for i in range(h):
             matriz_mod[i][j] = 0  # Lo que esta blanco lo cambio a negro
         else:
             matriz_mod[i][j] = 255
-
 # for i in range(h):
 #     for j in range(w):
 #         if matriz_mod[i][j] == 109:
 #             matriz_mod[i][j] = 100  # Lo que esta blanco lo cambio a negro
-#         elif 4 <= matriz_mod[i][j] <= 192: 
-#             matriz_mod[i][j] = 255
+#         elif  matriz_mod[i][j] >= 101: 
+#             matriz_mod[i][j] = 0
 #         else:
 #             matriz_mod[i][j] = 0  # Cambio a blanco(255)
+#             matriz_mod[i][j] = 255 # Cambio a blanco(255)
 
 plt.imshow(matriz_mod, cmap='gray', vmin=0, vmax=255)
 plt.title("Inversion de escalas")
 plt.show()
+plt.figure(figsize=(12, 6))
 
 # -------------------- Agrandar lineas -----------------------------
 # mask = np.array([[1, 0, 1],
@@ -66,7 +67,7 @@ x = np.zeros((height_m, width_m))
 y = np.zeros((height_m, width_m))
 z = np.zeros((height_m, width_m))
 
-# Creo un bucle for para agregarle las alturas dependiendo el valor de pixel
+# # Creo un bucle for para agregarle las alturas dependiendo el valor de pixel
 for i in range(height_m):
     for j in range(width_m):
         pixel = img_mask[i, j]
@@ -84,11 +85,12 @@ for i in range(height_m):
 #         x[i, j] = j  # Coordenada X
 #         y[i, j] = i  # Coordenada Y
 #         if pixel == 100 : 
-#             z[i,j] = 4
-#         if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
-#             z[i, j] = 6  # Altura Z
+#             z[i,j] = 6
+#         elif pixel == 255:  # Si el pixel es blanco, establece la altura en 6
+#             z[i, j] = 8 # Altura Z
 #         else:# Si el pixel es blanco, establece la altura en 6
-#             z[i, j] = 2 # Altura Z
+#             z[i, j] = 5 # Altura Z
+           
 
 # Creo una base con altura 0 y con igual dimesiones que la original
 x_base, y_base = np.meshgrid(range(width_m), range(height_m))
@@ -110,7 +112,7 @@ p.show()
 
 # ------Para guarda la estructura a stl 
 
-# polydata = mesh.extract_geometry()
-# stl_file = 'lluvia_particulas.stl'
-# polydata.save(stl_file)
-# print("se guardo la imagen como: ", stl_file)
+polydata = mesh.extract_geometry()
+stl_file = 'lluviaparticulas.stl'
+polydata.save(stl_file)
+print("se guardo la imagen como: ", stl_file)
