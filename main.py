@@ -32,7 +32,6 @@ for i in range(h):
 #         else:
 #             matriz_mod[i][j] = 0  # Cambio a blanco(255)
 #             matriz_mod[i][j] = 255 # Cambio a blanco(255)
-
 plt.imshow(matriz_mod, cmap='gray', vmin=0, vmax=255)
 plt.title("Inversion de escalas")
 plt.show()
@@ -68,15 +67,16 @@ y = np.zeros((height_m, width_m))
 z = np.zeros((height_m, width_m))
 
 # # Creo un bucle for para agregarle las alturas dependiendo el valor de pixel
-for i in range(height_m):
-    for j in range(width_m):
-        pixel = img_mask[i, j]
-        x[i, j] = j  # Coordenada X
-        y[i, j] = i  # Coordenada Y
-        if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
-            z[i, j] = 6  # Altura Z
-        else:# Si el pixel es blanco, establece la altura en 6
-            z[i, j] = 3 # Altura Z
+# for i in range(height_m):
+#     for j in range(width_m):
+#         pixel = img_mask[i, j]
+#         x[i, j] = j  # Coordenada X
+#         y[i, j] = i  # Coordenada Y
+#         if pixel == 255:  # Si el pixel es blanco, establece la altura en 6
+#             z[i, j] = 6  # Altura Z
+#         else:# Si el pixel es blanco, establece la altura en 6
+#             z[i, j] = 3 # Altura Z
+
 
 #Para rayos 
 # for i in range(height_m):
